@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { PageTransition } from "../components/PageTransition";
 
@@ -17,14 +16,6 @@ export const Projects = () => {
       description: "Modern e-commerce solution with real-time inventory management, payment integration, and responsive design.",
       tech: ["React", "Node.js", "MongoDB", "Stripe"],
       image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=500&h=300&fit=crop",
-      github: "#",
-      demo: "#"
-    },
-    {
-      title: "Task Management App",
-      description: "Collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.",
-      tech: ["React", "TypeScript", "Firebase", "Material-UI"],
-      image: "https://images.unsplash.com/photo-1649972904349-6e44c42644a7?w=500&h=300&fit=crop",
       github: "#",
       demo: "#"
     },
