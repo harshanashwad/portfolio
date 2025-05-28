@@ -18,7 +18,11 @@ const AnimatedSphere = () => {
 
   return (
     <Sphere ref={meshRef} args={[1, 32, 32]} position={[-3, 0, 0]}>
-      <meshStandardMaterial color="#8b5cf6" emissive="#4c1d95" emissiveIntensity={0.2} />
+      <meshStandardMaterial 
+        color="#8b5cf6" 
+        emissive="#4c1d95" 
+        emissiveIntensity={0.2} 
+      />
     </Sphere>
   );
 };
@@ -36,7 +40,11 @@ const AnimatedBox = () => {
 
   return (
     <Box ref={meshRef} args={[1.5, 1.5, 1.5]} position={[3, 0, 0]}>
-      <meshStandardMaterial color="#06b6d4" emissive="#0e7490" emissiveIntensity={0.2} />
+      <meshStandardMaterial 
+        color="#06b6d4" 
+        emissive="#0e7490" 
+        emissiveIntensity={0.2} 
+      />
     </Box>
   );
 };
@@ -54,7 +62,11 @@ const AnimatedTorus = () => {
 
   return (
     <Torus ref={meshRef} args={[1, 0.3, 16, 100]} position={[0, 0, 0]}>
-      <meshStandardMaterial color="#ec4899" emissive="#be185d" emissiveIntensity={0.2} />
+      <meshStandardMaterial 
+        color="#ec4899" 
+        emissive="#be185d" 
+        emissiveIntensity={0.2} 
+      />
     </Torus>
   );
 };
