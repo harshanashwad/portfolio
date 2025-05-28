@@ -1,12 +1,13 @@
 
-import { useRef } from 'react';
+import { useRef, Suspense } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { OrbitControls, Sphere, Box, Torus } from '@react-three/drei';
+import { OrbitControls } from '@react-three/drei';
 import { motion } from 'framer-motion';
 import { useTheme } from '../contexts/ThemeContext';
+import * as THREE from 'three';
 
 const AnimatedSphere = () => {
-  const meshRef = useRef<any>();
+  const meshRef = useRef<THREE.Mesh>(null);
 
   useFrame((state) => {
     if (meshRef.current) {
@@ -17,18 +18,19 @@ const AnimatedSphere = () => {
   });
 
   return (
-    <Sphere ref={meshRef} args={[1, 32, 32]} position={[-3, 0, 0]}>
+    <mesh ref={meshRef} position={[-3, 0, 0]}>
+      <sphereGeometry args={[1, 32, 32]} />
       <meshStandardMaterial 
         color="#8b5cf6" 
         emissive="#4c1d95" 
         emissiveIntensity={0.2} 
       />
-    </Sphere>
+    </mesh>
   );
 };
 
 const AnimatedBox = () => {
-  const meshRef = useRef<any>();
+  const meshRef = useRef<THREE.Mesh>(null);
 
   useFrame((state) => {
     if (meshRef.current) {
@@ -39,18 +41,19 @@ const AnimatedBox = () => {
   });
 
   return (
-    <Box ref={meshRef} args={[1.5, 1.5, 1.5]} position={[3, 0, 0]}>
+    <mesh ref={meshRef} position={[3, 0, 0]}>
+      <boxGeometry args={[1.5, 1.5, 1.5]} />
       <meshStandardMaterial 
         color="#06b6d4" 
         emissive="#0e7490" 
         emissiveIntensity={0.2} 
       />
-    </Box>
+    </mesh>
   );
 };
 
 const AnimatedTorus = () => {
-  const meshRef = useRef<any>();
+  const meshRef = useRef<THREE.Mesh>(null);
 
   useFrame((state) => {
     if (meshRef.current) {
@@ -61,19 +64,36 @@ const AnimatedTorus = () => {
   });
 
   return (
-    <Torus ref={meshRef} args={[1, 0.3, 16, 100]} position={[0, 0, 0]}>
+    <mesh ref={meshRef} position={[0, 0, 0]}>
+      <torusGeometry args={[1, 0.3, 16, 100]} />
       <meshStandardMaterial 
         color="#ec4899" 
         emissive="#be185d" 
         emissiveIntensity={0.2} 
       />
-    </Torus>
+    </mesh>
+  );
+};
+
+const Scene = () => {
+  const { theme } = useTheme();
+  
+  return (
+    <>
+      <ambientLight intensity={theme === 'dark' ? 0.3 : 0.6} />
+      <pointLight position={[10, 10, 10]} intensity={theme === 'dark' ? 1 : 1.5} />
+      <pointLight position={[-10, -10, -10]} intensity={0.5} color="#8b5cf6" />
+      
+      <AnimatedSphere />
+      <AnimatedBox />
+      <AnimatedTorus />
+      
+      <OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={0.5} />
+    </>
   );
 };
 
 export const Hero3D = () => {
-  const { theme } = useTheme();
-
   return (
     <motion.div
       className="w-full h-64 md:h-80"
@@ -82,15 +102,9 @@ export const Hero3D = () => {
       transition={{ duration: 1, delay: 0.5 }}
     >
       <Canvas camera={{ position: [0, 0, 8], fov: 60 }}>
-        <ambientLight intensity={theme === 'dark' ? 0.3 : 0.6} />
-        <pointLight position={[10, 10, 10]} intensity={theme === 'dark' ? 1 : 1.5} />
-        <pointLight position={[-10, -10, -10]} intensity={0.5} color="#8b5cf6" />
-        
-        <AnimatedSphere />
-        <AnimatedBox />
-        <AnimatedTorus />
-        
-        <OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={0.5} />
+        <Suspense fallback={null}>
+          <Scene />
+        </Suspense>
       </Canvas>
     </motion.div>
   );
