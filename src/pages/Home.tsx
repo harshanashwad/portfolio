@@ -92,7 +92,7 @@ export const Home = () => {
                 </motion.a>
 
                 <motion.a
-                  href="https://linkedin.com"
+                  href="https://www.linkedin.com/in/harshan-ashwad-539629211/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-3 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-all duration-300"
@@ -107,7 +107,7 @@ export const Home = () => {
                 </motion.a>
 
                 <motion.a
-                  href="https://youtube.com"
+                  href="https://www.youtube.com/@Harshan_Ashwad"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-3 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:text-pink-600 dark:hover:text-pink-400 transition-all duration-300"
