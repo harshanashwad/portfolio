@@ -1,31 +1,26 @@
-
 import { motion } from "framer-motion";
 import { PageTransition } from "../components/PageTransition";
 
 export const About = () => {
-  const skills = [
-    "React.js", "TypeScript", "Node.js", "Python", "Three.js", "Framer Motion",
-    "TailwindCSS", "MongoDB", "PostgreSQL", "AWS", "Docker", "Git"
-  ];
-
   const experiences = [
     {
-      title: "Senior Frontend Developer",
-      company: "Tech Innovators Inc.",
-      period: "2022 - Present",
-      description: "Led the development of interactive web applications using React and modern JavaScript frameworks."
+      title: "Software Developer",
+      company: "IBM",
+      period: "Jan 2022 - Nov 2023",
+      description: "Led development of Quote To Cash application using Node.js and Vue.js, implementing real-time features and optimizing system performance. Built SMTP-based monitoring system reducing downtime by 25% and managed AWS infrastructure (EC2, IAM, S3) for deployments."
+    }
+  ];
+
+  const education = [
+    {
+      degree: "Master of Computing in Artificial Intelligence",
+      school: "National University of Singapore",
+      period: "Jan 2024 - Jun 2025"
     },
     {
-      title: "Full Stack Developer",
-      company: "Digital Solutions Ltd.",
-      period: "2020 - 2022",
-      description: "Built end-to-end web solutions with focus on performance and user experience."
-    },
-    {
-      title: "Junior Developer",
-      company: "StartupCo",
-      period: "2019 - 2020",
-      description: "Contributed to various projects while learning modern web development practices."
+      degree: "BE Computer Science and Engineering",
+      school: "Thiagarajar College of Engineering",
+      period: "Aug 2018 - Aug 2022"
     }
   ];
 
@@ -45,9 +40,6 @@ export const About = () => {
                 About Me
               </span>
             </h1>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              Passionate developer with a love for creating beautiful, functional, and user-friendly applications
-            </p>
           </motion.div>
 
           {/* Personal Story */}
@@ -58,44 +50,15 @@ export const About = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-2xl p-8 md:p-12 shadow-xl border border-gray-200 dark:border-gray-700">
-              <h2 className="text-3xl font-bold mb-6 text-gray-800 dark:text-white">My Journey</h2>
               <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
-                Started as a curious student exploring the world of programming, I've grown into a passionate developer 
-                who believes in the power of technology to solve real-world problems. My journey has taken me through 
-                various technologies and frameworks, always pushing me to learn and adapt.
+                Software Developer with a strong foundation in AI, currently pursuing my Master's in Artificial Intelligence at NUS.
+              </p>
+              <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                With past experience at IBM and hands-on work across full-stack development and machine learning, I enjoy building systems that merge logic with creativity — from real-time apps to LLM-powered assistants. I love to explore the intersection of technology and intelligence — a lifelong learner passionate about clean code and clever systems.
               </p>
               <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-                When I'm not coding, you'll find me exploring new technologies, contributing to open-source projects, 
-                or sharing my knowledge with the developer community through articles and tutorials.
+                Outside of dev life, you'll find me having coffee, trying to fool LLMs or overthinking model architectures for fun.
               </p>
-            </div>
-          </motion.div>
-
-          {/* Skills */}
-          <motion.div
-            className="mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            <h2 className="text-3xl font-bold mb-8 text-center text-gray-800 dark:text-white">
-              Skills & Technologies
-            </h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-              {skills.map((skill, index) => (
-                <motion.div
-                  key={skill}
-                  className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-lg rounded-xl p-4 text-center border border-gray-200 dark:border-gray-700"
-                  whileHover={{ scale: 1.05, y: -5 }}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
-                >
-                  <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">
-                    {skill}
-                  </span>
-                </motion.div>
-              ))}
             </div>
           </motion.div>
 
@@ -130,6 +93,36 @@ export const About = () => {
             </div>
           </motion.div>
 
+          {/* Education Timeline */}
+          <motion.div
+            className="mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+          >
+            <h2 className="text-3xl font-bold mb-12 text-center text-gray-800 dark:text-white">
+              Education
+            </h2>
+            <div className="space-y-8">
+              {education.map((edu, index) => (
+                <motion.div
+                  key={index}
+                  className="relative pl-8 border-l-2 border-purple-500"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: 0.8 + index * 0.2 }}
+                >
+                  <div className="absolute -left-2 top-0 w-4 h-4 bg-purple-500 rounded-full"></div>
+                  <div className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-lg rounded-xl p-6 border border-gray-200 dark:border-gray-700">
+                    <h3 className="text-xl font-bold text-gray-800 dark:text-white">{edu.school}</h3>
+                    <p className="text-purple-600 dark:text-purple-400 font-semibold">{edu.degree}</p>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">{edu.period}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
           {/* Call to Action */}
           <motion.div
             className="text-center mb-16"
@@ -137,7 +130,7 @@ export const About = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1 }}
           >
-            <div className="bg-gradient-to-r from-purple-600 via-cyan-600 to-pink-600 rounded-2xl p-8 md:p-12">
+            <div className="relative z-20 bg-gradient-to-r from-purple-600/95 via-cyan-600/95 to-pink-600/95 rounded-2xl p-8 md:p-12 backdrop-blur-xl shadow-xl border border-white/10">
               <h2 className="text-3xl font-bold text-white mb-4">Let's Work Together</h2>
               <p className="text-white/90 text-lg mb-6">
                 Ready to bring your ideas to life? Let's discuss how we can create something amazing together.

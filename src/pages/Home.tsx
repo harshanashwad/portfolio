@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { PageTransition } from "../components/PageTransition";
 import { Hero3D } from "../components/Hero3D";
@@ -27,11 +26,11 @@ export const Home = () => {
                 transition={{ duration: 0.8, delay: 0.4 }}
               >
                 <span className="bg-gradient-to-r from-purple-500 via-cyan-500 to-pink-500 bg-clip-text text-transparent">
-                  Creative
+                  Hi,
                 </span>
                 <br />
                 <span className="text-gray-800 dark:text-white">
-                  Developer
+                  I'm Harshan
                 </span>
               </motion.h1>
 
@@ -41,8 +40,8 @@ export const Home = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
               >
-                Building interactive experiences with modern web technologies. 
-                Passionate about creating beautiful, functional applications that make a difference.
+                A self-driven Software Dev and AI enthusiast with a knack for building smart, scalable systems.
+                From deep learning models to full-stack apps — I turn ideas into impactful code.
               </motion.p>
 
               <motion.div 
@@ -76,56 +75,63 @@ export const Home = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              <Hero3D />
+              <div className="flex flex-col items-center justify-start">
+                {/* Hero Image Section */}
+                <motion.div
+                  className="mt-24 mb-8"
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 1, delay: 1 }}
+                >
+                  <motion.div
+                    className="relative"
+                    whileHover={{ y: -10 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <div className="w-64 h-64 md:w-96 md:h-96 rounded-full bg-gradient-to-br from-purple-600 via-cyan-500 to-pink-500 p-1">
+                      <div className="w-full h-full rounded-full bg-white dark:bg-gray-900 flex items-center justify-center overflow-hidden">
+                        <img 
+                          src="/dp.jpg" 
+                          alt="Profile"
+                          // className="w-[120%] h-[120%] object-cover scale-90"
+                          className="w-[130%] h-[130%] object-cover scale-100 translate-y-[+9%]"
+                        />
+                      </div>
+                    </div>
+                    
+                    {/* Floating Elements */}
+                    <motion.div
+                      className="absolute -top-4 -right-4 w-10 h-10 bg-purple-500 rounded-full"
+                      animate={{
+                        y: [0, -10, 0],
+                        scale: [1, 1.1, 1],
+                      }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                    />
+                    <motion.div
+                      className="absolute -bottom-6 -left-6 w-8 h-8 bg-cyan-500 rounded-full"
+                      animate={{
+                        y: [0, 10, 0],
+                        scale: [1, 1.2, 1],
+                      }}
+                      transition={{
+                        duration: 2.5,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                        delay: 0.5
+                      }}
+                    />
+                  </motion.div>
+                </motion.div>
+
+                <Hero3D />
+              </div>
             </motion.div>
           </div>
-
-          {/* Hero Image Section */}
-          <motion.div
-            className="flex justify-center my-16"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 1 }}
-          >
-            <motion.div
-              className="relative"
-              whileHover={{ y: -10 }}
-              transition={{ duration: 0.3 }}
-            >
-              <div className="w-64 h-64 md:w-80 md:h-80 rounded-full bg-gradient-to-br from-purple-600 via-cyan-500 to-pink-500 p-1">
-                <div className="w-full h-full rounded-full bg-white dark:bg-gray-900 flex items-center justify-center">
-                  <div className="text-6xl md:text-8xl">👨‍💻</div>
-                </div>
-              </div>
-              
-              {/* Floating Elements */}
-              <motion.div
-                className="absolute -top-4 -right-4 w-8 h-8 bg-purple-500 rounded-full"
-                animate={{
-                  y: [0, -10, 0],
-                  scale: [1, 1.1, 1],
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              />
-              <motion.div
-                className="absolute -bottom-6 -left-6 w-6 h-6 bg-cyan-500 rounded-full"
-                animate={{
-                  y: [0, 10, 0],
-                  scale: [1, 1.2, 1],
-                }}
-                transition={{
-                  duration: 2.5,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: 0.5
-                }}
-              />
-            </motion.div>
-          </motion.div>
         </div>
       </div>
     </PageTransition>

@@ -12,14 +12,6 @@ export const Projects = () => {
       demo: "#"
     },
     {
-      title: "E-Commerce Platform",
-      description: "Modern e-commerce solution with real-time inventory management, payment integration, and responsive design.",
-      tech: ["React", "Node.js", "MongoDB", "Stripe"],
-      image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=500&h=300&fit=crop",
-      github: "#",
-      demo: "#"
-    },
-    {
       title: "Data Visualization Dashboard",
       description: "Interactive dashboard for data visualization with real-time charts, filters, and export functionality.",
       tech: ["React", "D3.js", "Python", "FastAPI"],
