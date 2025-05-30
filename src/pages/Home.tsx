@@ -77,7 +77,7 @@ export const Home = () => {
                 transition={{ duration: 0.8, delay: 1.0 }}
               >
                 <motion.a
-                  href="https://github.com"
+                  href="https://github.com/harshanashwad"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-3 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-all duration-300"
