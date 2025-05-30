@@ -1,7 +1,9 @@
+
 import { motion } from "framer-motion";
 import { PageTransition } from "../components/PageTransition";
 import { Hero3D } from "../components/Hero3D";
 import { useTheme } from "../contexts/ThemeContext";
+import { Github, Linkedin, Youtube } from "lucide-react";
 
 export const Home = () => {
   const { theme } = useTheme();
@@ -45,7 +47,7 @@ export const Home = () => {
               </motion.p>
 
               <motion.div 
-                className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+                className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.8 }}
@@ -65,6 +67,59 @@ export const Home = () => {
                 >
                   Get In Touch
                 </motion.button>
+              </motion.div>
+
+              {/* Social Media Icons */}
+              <motion.div 
+                className="flex gap-6 justify-center lg:justify-start"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 1.0 }}
+              >
+                <motion.a
+                  href="https://github.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-all duration-300"
+                  whileHover={{ 
+                    y: -8, 
+                    scale: 1.1,
+                    boxShadow: "0 10px 30px rgba(139, 92, 246, 0.4)"
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Github size={24} />
+                </motion.a>
+
+                <motion.a
+                  href="https://linkedin.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-all duration-300"
+                  whileHover={{ 
+                    y: -8, 
+                    scale: 1.1,
+                    boxShadow: "0 10px 30px rgba(6, 182, 212, 0.4)"
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Linkedin size={24} />
+                </motion.a>
+
+                <motion.a
+                  href="https://youtube.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:text-pink-600 dark:hover:text-pink-400 transition-all duration-300"
+                  whileHover={{ 
+                    y: -8, 
+                    scale: 1.1,
+                    boxShadow: "0 10px 30px rgba(236, 72, 153, 0.4)"
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Youtube size={24} />
+                </motion.a>
               </motion.div>
             </motion.div>
 
@@ -93,7 +148,6 @@ export const Home = () => {
                         <img 
                           src="/dp.jpg" 
                           alt="Profile"
-                          // className="w-[120%] h-[120%] object-cover scale-90"
                           className="w-[130%] h-[130%] object-cover scale-100 translate-y-[+9%]"
                         />
                       </div>
