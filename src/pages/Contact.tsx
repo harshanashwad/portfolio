@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { PageTransition } from "../components/PageTransition";
+import { Github, Linkedin, Youtube } from "lucide-react";
 
 export const Contact = () => {
   const [formData, setFormData] = useState({
@@ -24,10 +25,16 @@ export const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    // Create email content
+    const emailSubject = `Contact Form: ${formData.subject}`;
+    const emailBody = `Name: ${formData.name}%0D%0AEmail: ${formData.email}%0D%0ASubject: ${formData.subject}%0D%0A%0D%0AMessage:%0D%0A${formData.message}`;
     
-    console.log("Form submitted:", formData);
+    // Create mailto link
+    const mailtoLink = `mailto:harshanashwad@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${emailBody}`;
+    
+    // Open default email client
+    window.location.href = mailtoLink;
+    
     setIsSubmitting(false);
     
     // Reset form
@@ -38,15 +45,6 @@ export const Contact = () => {
       message: ""
     });
   };
-
-  const socialLinks = [
-    { name: "GitHub", url: "#", icon: "🐙" },
-    { name: "LinkedIn", url: "#", icon: "💼" },
-    { name: "YouTube", url: "#", icon: "📺" },
-    { name: "Instagram", url: "#", icon: "📷" },
-    { name: "LeetCode", url: "#", icon: "💻" },
-    { name: "Codeforces", url: "#", icon: "🏆" }
-  ];
 
   return (
     <PageTransition>
@@ -170,7 +168,7 @@ export const Contact = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.7 }}
                 >
-                  {isSubmitting ? "Sending..." : "Send Message"}
+                  {isSubmitting ? "Opening Email Client..." : "Send Message"}
                 </motion.button>
               </form>
             </motion.div>
@@ -225,23 +223,60 @@ export const Contact = () => {
                 <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-6">
                   Connect With Me
                 </h3>
-                <div className="grid grid-cols-2 gap-4">
-                  {socialLinks.map((link, index) => (
-                    <motion.a
-                      key={link.name}
-                      href={link.url}
-                      className="flex items-center space-x-3 p-3 bg-white/50 dark:bg-gray-700/50 rounded-lg hover:bg-purple-50 dark:hover:bg-purple-900/20 transition-all duration-300"
-                      whileHover={{ scale: 1.05, x: 5 }}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
-                    >
-                      <span className="text-xl">{link.icon}</span>
-                      <span className="text-gray-700 dark:text-gray-300 font-semibold">
-                        {link.name}
-                      </span>
-                    </motion.a>
-                  ))}
+                <div className="flex gap-6 justify-center">
+                  <motion.a
+                    href="https://github.com/harshanashwad"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-4 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-all duration-300"
+                    whileHover={{ 
+                      y: -8, 
+                      scale: 1.1,
+                      boxShadow: "0 10px 30px rgba(139, 92, 246, 0.4)"
+                    }}
+                    whileTap={{ scale: 0.95 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.8 }}
+                  >
+                    <Github size={28} />
+                  </motion.a>
+
+                  <motion.a
+                    href="https://www.linkedin.com/in/harshan-ashwad-539629211/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-4 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-all duration-300"
+                    whileHover={{ 
+                      y: -8, 
+                      scale: 1.1,
+                      boxShadow: "0 10px 30px rgba(6, 182, 212, 0.4)"
+                    }}
+                    whileTap={{ scale: 0.95 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.9 }}
+                  >
+                    <Linkedin size={28} />
+                  </motion.a>
+
+                  <motion.a
+                    href="https://www.youtube.com/@Harshan_Ashwad"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-4 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:text-pink-600 dark:hover:text-pink-400 transition-all duration-300"
+                    whileHover={{ 
+                      y: -8, 
+                      scale: 1.1,
+                      boxShadow: "0 10px 30px rgba(236, 72, 153, 0.4)"
+                    }}
+                    whileTap={{ scale: 0.95 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 1.0 }}
+                  >
+                    <Youtube size={28} />
+                  </motion.a>
                 </div>
               </div>
 

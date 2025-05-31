@@ -4,9 +4,11 @@ import { PageTransition } from "../components/PageTransition";
 import { Hero3D } from "../components/Hero3D";
 import { useTheme } from "../contexts/ThemeContext";
 import { Github, Linkedin, Youtube } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export const Home = () => {
   const { theme } = useTheme();
+  const navigate = useNavigate();
 
   return (
     <PageTransition>
@@ -16,7 +18,7 @@ export const Home = () => {
           <div className="flex flex-col lg:flex-row items-center justify-between min-h-[80vh]">
             {/* Left Side - Content */}
             <motion.div 
-              className="flex-1 text-center lg:text-left mb-12 lg:mb-0 relative z-10"
+              className="flex-1 text-center lg:text-left mb-12 lg:mb-0 relative z-10 lg:-mt-16"
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -61,6 +63,7 @@ export const Home = () => {
                 </motion.button>
                 
                 <motion.button
+                  onClick={() => navigate('/contact')}
                   className="px-8 py-4 border-2 border-purple-600 text-purple-600 dark:text-purple-400 rounded-full font-semibold text-lg hover:bg-purple-600 hover:text-white transition-all duration-300"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -71,7 +74,7 @@ export const Home = () => {
 
               {/* Social Media Icons */}
               <motion.div 
-                className="flex gap-6 justify-center lg:justify-start"
+                className="flex gap-6 justify-center lg:justify-start mb-12"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 1.0 }}
