@@ -96,7 +96,7 @@ export const Contact = () => {
 
   return (
     <PageTransition>
-      <div className="min-h-screen pt-20 px-6">
+      <div className="min-h-screen pt-20 px-6 pb-20">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
           <motion.div
@@ -284,7 +284,7 @@ export const Contact = () => {
                     whileTap={{ scale: 0.95 }}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.8 }}
+                    transition={{ duration: 0.15 }}
                   >
                     <Github size={28} />
                   </motion.a>
@@ -302,7 +302,7 @@ export const Contact = () => {
                     whileTap={{ scale: 0.95 }}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.9 }}
+                    transition={{ duration: 0.15 }}
                   >
                     <Linkedin size={28} />
                   </motion.a>
@@ -320,7 +320,7 @@ export const Contact = () => {
                     whileTap={{ scale: 0.95 }}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 1.0 }}
+                    transition={{ duration: 0.15 }}
                   >
                     <Youtube size={28} />
                   </motion.a>
@@ -329,7 +329,7 @@ export const Contact = () => {
 
               {/* Download Resume */}
               <motion.div
-                className="bg-gradient-to-r from-purple-600 to-cyan-600 rounded-2xl p-8 text-center"
+                className="relative z-10 bg-gradient-to-r from-purple-600 to-cyan-600 rounded-2xl p-8 text-center"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 1 }}
@@ -340,13 +340,16 @@ export const Contact = () => {
                 <p className="text-white/90 mb-6">
                   Get a detailed overview of my experience and skills
                 </p>
-                <motion.button
+                <motion.a
+                  href="/resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="px-6 py-3 bg-white text-purple-600 rounded-full font-semibold hover:bg-gray-100 transition-all duration-300"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   Download CV
-                </motion.button>
+                </motion.a>
               </motion.div>
             </motion.div>
           </div>
