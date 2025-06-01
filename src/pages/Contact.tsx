@@ -1,3 +1,7 @@
+import emailjs from 'emailjs-com';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 import { useState } from "react";
 import { motion } from "framer-motion";
@@ -64,38 +68,94 @@ export const Contact = () => {
     }
   };
 
+  // const handleSubmit = async (e: React.FormEvent) => {
+  //   e.preventDefault();
+    
+  //   if (!validateForm()) {
+  //     return;
+  //   }
+
+  //   setIsSubmitting(true);
+    
+  //   // Create email content
+  //   const emailSubject = formData.subject ? `Contact Form: ${formData.subject}` : "Contact Form Message";
+  //   const emailBody = `Name: ${formData.name}%0D%0AEmail: ${formData.email}%0D%0ASubject: ${formData.subject || "No subject"}%0D%0A%0D%0AMessage:%0D%0A${formData.message}`;
+    
+  //   // Create mailto link
+  //   const mailtoLink = `mailto:harshanashwad@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${emailBody}`;
+    
+  //   // Open default email client
+  //   window.location.href = mailtoLink;
+    
+  //   setIsSubmitting(false);
+    
+  //   // Reset form
+  //   setFormData({
+  //     name: "",
+  //     email: "",
+  //     subject: "",
+  //     message: ""
+  //   });
+  // };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    if (!validateForm()) {
-      return;
-    }
-
+  
+    if (!validateForm()) return;
+  
     setIsSubmitting(true);
-    
-    // Create email content
-    const emailSubject = formData.subject ? `Contact Form: ${formData.subject}` : "Contact Form Message";
-    const emailBody = `Name: ${formData.name}%0D%0AEmail: ${formData.email}%0D%0ASubject: ${formData.subject || "No subject"}%0D%0A%0D%0AMessage:%0D%0A${formData.message}`;
-    
-    // Create mailto link
-    const mailtoLink = `mailto:harshanashwad@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${emailBody}`;
-    
-    // Open default email client
-    window.location.href = mailtoLink;
-    
+  
+    try {
+      const result = await emailjs.send(
+        "service_8cxliw3",          // Your Service ID
+        "template_xsdn0fr",         // Your Template ID
+        {
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject || "No subject",
+          message: formData.message
+        },
+        "s4aaxTDc6M0HfE2Fy"  // Replace with your public key from EmailJS
+      );
+  
+      console.log("Email successfully sent:", result.text);
+  
+      // Optionally show a success message
+      // alert("Message sent successfully!");
+      toast.success("Message sent successfully!");
+
+      // Reset form
+      setFormData({
+        name: "",
+        email: "",
+        subject: "",
+        message: ""
+      });
+    } catch (error) {
+      console.error("Failed to send email:", error);
+      // alert("Failed to send message. Please try again.");
+      toast.error("Failed to send message. Please try again.");
+      
+    }
+  
     setIsSubmitting(false);
-    
-    // Reset form
-    setFormData({
-      name: "",
-      email: "",
-      subject: "",
-      message: ""
-    });
   };
+  
 
   return (
     <PageTransition>
+      <ToastContainer 
+      position="top-center"
+      autoClose={3000}
+      hideProgressBar={false}
+      newestOnTop={true}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+    />
+
       <div className="min-h-screen pt-20 px-6 pb-20">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
@@ -215,7 +275,7 @@ export const Contact = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.7 }}
                 >
-                  {isSubmitting ? "Opening Email Client..." : "Send Message"}
+                  {isSubmitting ? "Sending Message..." : "Send Message"}
                 </motion.button>
               </form>
             </motion.div>
