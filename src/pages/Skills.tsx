@@ -4,12 +4,13 @@ import { PageTransition } from "../components/PageTransition";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
+import { Brain, BarChart3, Server, Zap, Wrench, Award } from "lucide-react";
 
 export const Skills = () => {
   const skillCategories = [
     {
       title: "Machine Learning & AI",
-      icon: "🧠",
+      icon: Brain,
       skills: [
         { name: "PyTorch", level: 92, description: "Primary deep learning framework" },
         { name: "SHAP", level: 85, description: "Explainable AI techniques" },
@@ -27,7 +28,7 @@ export const Skills = () => {
     },
     {
       title: "Data Science & Analysis",
-      icon: "📊",
+      icon: BarChart3,
       skills: [
         { name: "Pandas", level: 95, description: "Data manipulation & analysis" },
         { name: "NumPy", level: 92, description: "Numerical computing" },
@@ -43,7 +44,7 @@ export const Skills = () => {
     },
     {
       title: "Backend & DevOps",
-      icon: "⚙️",
+      icon: Server,
       skills: [
         { name: "Node.js", level: 92, description: "Backend application development" },
         { name: "Flask", level: 88, description: "Python microservices" },
@@ -58,7 +59,7 @@ export const Skills = () => {
     },
     {
       title: "Frontend & UI",
-      icon: "⚡",
+      icon: Zap,
       skills: [
         { name: "React.js", level: 95, description: "Component-based UI development" },
         { name: "Vue.js", level: 88, description: "Progressive framework" },
@@ -121,81 +122,79 @@ export const Skills = () => {
           </motion.div>
 
           {/* Skills Categories */}
-          <div className="space-y-12 mb-16">
-            {skillCategories.map((category, categoryIndex) => (
-              <motion.div
-                key={category.title}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: categoryIndex * 0.2 }}
-              >
-                <div className="flex items-center gap-3 mb-8">
-                  <span className="text-4xl">{category.icon}</span>
-                  <h2 className="text-3xl font-bold text-gray-800 dark:text-white">
-                    {category.title}
-                  </h2>
-                </div>
-                
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-                  {category.skills.map((skill, skillIndex) => (
-                    <HoverCard key={skill.name}>
-                      <HoverCardTrigger asChild>
-                        <motion.div
-                          className="group cursor-pointer"
-                          initial={{ opacity: 0, scale: 0.9 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          transition={{ duration: 0.5, delay: categoryIndex * 0.2 + skillIndex * 0.05 }}
-                          whileHover={{ 
-                            scale: 1.05,
-                            rotateX: 5,
-                            rotateY: 5,
-                            transition: { duration: 0.2 }
-                          }}
-                          whileTap={{ scale: 0.95 }}
-                        >
-                          <Card className="h-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg border border-gray-200 dark:border-gray-700 transition-all duration-300 group-hover:shadow-2xl group-hover:shadow-purple-500/20 group-hover:border-purple-400/50">
-                            <CardHeader className="pb-3">
-                              <CardTitle className="text-lg font-bold text-gray-800 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
-                                {skill.name}
-                              </CardTitle>
-                            </CardHeader>
-                            <CardContent>
-                              <div className="flex justify-between items-center mb-3">
-                                <span className="text-purple-600 dark:text-purple-400 font-bold text-sm">
-                                  {skill.level}%
-                                </span>
-                              </div>
-                              <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-                                <motion.div
-                                  className="bg-gradient-to-r from-purple-600 to-cyan-600 h-2 rounded-full group-hover:shadow-lg group-hover:shadow-purple-500/50"
-                                  initial={{ width: 0 }}
-                                  animate={{ width: `${skill.level}%` }}
-                                  transition={{ duration: 1, delay: categoryIndex * 0.2 + skillIndex * 0.05 + 0.5 }}
-                                />
-                              </div>
-                            </CardContent>
-                          </Card>
-                        </motion.div>
-                      </HoverCardTrigger>
-                      <HoverCardContent className="w-80">
-                        <div className="space-y-2">
-                          <h4 className="text-sm font-semibold text-purple-600 dark:text-purple-400">{skill.name}</h4>
-                          <p className="text-sm text-gray-600 dark:text-gray-300">
-                            {skill.description}
-                          </p>
-                          <div className="flex items-center gap-2">
-                            <span className="text-xs text-gray-500">Proficiency:</span>
-                            <Badge variant="secondary" className="text-xs">
-                              {skill.level}%
-                            </Badge>
-                          </div>
+          <div className="space-y-8 mb-16">
+            {skillCategories.map((category, categoryIndex) => {
+              const IconComponent = category.icon;
+              return (
+                <motion.div
+                  key={category.title}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: categoryIndex * 0.2 }}
+                >
+                  <div className="flex items-center gap-3 mb-6">
+                    <IconComponent className="text-3xl text-purple-600 dark:text-purple-400" size={32} />
+                    <h2 className="text-3xl font-bold text-gray-800 dark:text-white">
+                      {category.title}
+                    </h2>
+                  </div>
+                  
+                  <motion.div
+                    className="group cursor-pointer"
+                    whileHover={{ 
+                      scale: 1.02,
+                      rotateX: 2,
+                      rotateY: 2,
+                      transition: { duration: 0.3 }
+                    }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg border border-gray-200 dark:border-gray-700 transition-all duration-300 group-hover:shadow-2xl group-hover:shadow-purple-500/20 group-hover:border-purple-400/50 group-hover:bg-white/90 dark:group-hover:bg-gray-800/90">
+                      <CardContent className="p-8">
+                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
+                          {category.skills.map((skill, skillIndex) => (
+                            <HoverCard key={skill.name}>
+                              <HoverCardTrigger asChild>
+                                <div className="text-center group/skill cursor-pointer">
+                                  <div className="bg-gradient-to-br from-purple-100 to-cyan-100 dark:from-purple-900/30 dark:to-cyan-900/30 rounded-lg p-4 mb-2 group-hover/skill:from-purple-200 group-hover/skill:to-cyan-200 dark:group-hover/skill:from-purple-800/40 dark:group-hover/skill:to-cyan-800/40 transition-all duration-300">
+                                    <div className="text-sm font-semibold text-purple-700 dark:text-purple-300 mb-2">
+                                      {skill.name}
+                                    </div>
+                                    <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5">
+                                      <div
+                                        className="bg-gradient-to-r from-purple-600 to-cyan-600 h-1.5 rounded-full"
+                                        style={{ width: `${skill.level}%` }}
+                                      />
+                                    </div>
+                                    <div className="text-xs text-purple-600 dark:text-purple-400 font-bold mt-1">
+                                      {skill.level}%
+                                    </div>
+                                  </div>
+                                </div>
+                              </HoverCardTrigger>
+                              <HoverCardContent className="w-80">
+                                <div className="space-y-2">
+                                  <h4 className="text-sm font-semibold text-purple-600 dark:text-purple-400">{skill.name}</h4>
+                                  <p className="text-sm text-gray-600 dark:text-gray-300">
+                                    {skill.description}
+                                  </p>
+                                  <div className="flex items-center gap-2">
+                                    <span className="text-xs text-gray-500">Proficiency:</span>
+                                    <Badge variant="secondary" className="text-xs">
+                                      {skill.level}%
+                                    </Badge>
+                                  </div>
+                                </div>
+                              </HoverCardContent>
+                            </HoverCard>
+                          ))}
                         </div>
-                      </HoverCardContent>
-                    </HoverCard>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                </motion.div>
+              );
+            })}
           </div>
 
           {/* Tools & Technologies */}
@@ -205,13 +204,13 @@ export const Skills = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
           >
-            <div className="flex items-center gap-3 mb-8">
-              <span className="text-4xl">🧰</span>
+            <div className="flex items-center justify-center gap-3 mb-8">
+              <Wrench className="text-3xl text-purple-600 dark:text-purple-400" size={32} />
               <h2 className="text-3xl font-bold text-gray-800 dark:text-white">
                 Tools & Technologies
               </h2>
             </div>
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap justify-center gap-3">
               {tools.map((tool, index) => (
                 <motion.div
                   key={tool}
@@ -244,8 +243,8 @@ export const Skills = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1 }}
           >
-            <div className="flex items-center gap-3 mb-8">
-              <span className="text-4xl">🏅</span>
+            <div className="flex items-center justify-center gap-3 mb-8">
+              <Award className="text-3xl text-purple-600 dark:text-purple-400" size={32} />
               <h2 className="text-3xl font-bold text-gray-800 dark:text-white">
                 Certifications
               </h2>
@@ -260,7 +259,9 @@ export const Skills = () => {
                   transition={{ duration: 0.5, delay: 1.2 + index * 0.1 }}
                   whileHover={{ 
                     y: -10,
-                    rotateY: 10,
+                    rotateY: 5,
+                    rotateX: 5,
+                    scale: 1.02,
                     transition: { duration: 0.3 }
                   }}
                   whileTap={{ scale: 0.95 }}
