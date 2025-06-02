@@ -287,7 +287,7 @@ export const Skills = () => {
                         <h3 className="text-lg font-bold text-gray-800 dark:text-white mb-2 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
                           {cert.title}
                         </h3>
-                        <p className="text-cyan-600 dark:text-cyan-400 font-semibold text-sm">
+                        <p className="text-purple-600 dark:text-purple-400 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 font-semibold text-sm transition-colors">
                           {cert.year}
                         </p>
                       </CardContent>
