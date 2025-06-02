@@ -13,14 +13,14 @@ export const Skills = () => {
       icon: Brain,
       skills: [
         { name: "PyTorch", level: 92, description: "Primary deep learning framework" },
-        { name: "SHAP", level: 85, description: "Explainable AI techniques" },
+        // { name: "SHAP", level: 85, description: "Explainable AI techniques" },
         { name: "LangChain", level: 88, description: "RAG pipeline builder" },
         { name: "LangGraph", level: 80, description: "Multi-turn graph-based agent handling" },
         { name: "LlamaIndex", level: 82, description: "Document indexing for RAG" },
-        { name: "HuggingFace Transformers", level: 90, description: "LLM interfacing" },
+        // { name: "HuggingFace Transformers", level: 90, description: "LLM interfacing" },
         { name: "Scikit-learn", level: 95, description: "Classic ML algorithms" },
         { name: "ARIMA", level: 85, description: "Time series forecasting" },
-        { name: "Isolation Forest", level: 78, description: "Anomaly detection" },
+        // { name: "Isolation Forest", level: 78, description: "Anomaly detection" },
         { name: "OpenCV", level: 80, description: "Computer vision projects" },
         { name: "Keras", level: 88, description: "Secondary DL framework" },
         { name: "CNNs & GNNs", level: 85, description: "Neural network architectures" }
@@ -48,7 +48,7 @@ export const Skills = () => {
       skills: [
         { name: "Node.js", level: 92, description: "Backend application development" },
         { name: "Flask", level: 88, description: "Python microservices" },
-        { name: "Express.js", level: 90, description: "Web application framework" },
+        // { name: "Express.js", level: 90, description: "Web application framework" },
         { name: "REST APIs", level: 95, description: "API design & implementation" },
         { name: "Swagger", level: 85, description: "API documentation" },
         { name: "Microservices", level: 82, description: "Distributed architecture" },
@@ -73,8 +73,7 @@ export const Skills = () => {
   ];
 
   const tools = [
-    "Git", "GitHub", "VS Code", "Postman", "Jupyter", "Notion", 
-    "Figma", "Power BI", "Tableau", "Jest", "Cypress", "Webpack", "Vite"
+    "Git", "GitHub", "VS Code", "Postman", "Jupyter", "Notion", "Tableau", "Power BI", "Vite", "Adobe Creative Suite", "Manim"
   ];
 
   const certifications = [
