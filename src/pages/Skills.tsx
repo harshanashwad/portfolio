@@ -4,7 +4,7 @@ import { PageTransition } from "../components/PageTransition";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
-import { Brain, BarChart3, Server, Zap, Wrench, Award } from "lucide-react";
+import { Brain, BarChart3, Server, Zap, Wrench, Award, Cloud, Calculator, GraduationCap, Code } from "lucide-react";
 
 export const Skills = () => {
   const skillCategories = [
@@ -13,14 +13,11 @@ export const Skills = () => {
       icon: Brain,
       skills: [
         { name: "PyTorch", level: 92, description: "Primary deep learning framework" },
-        // { name: "SHAP", level: 85, description: "Explainable AI techniques" },
         { name: "LangChain", level: 88, description: "RAG pipeline builder" },
         { name: "LangGraph", level: 80, description: "Multi-turn graph-based agent handling" },
         { name: "LlamaIndex", level: 82, description: "Document indexing for RAG" },
-        // { name: "HuggingFace Transformers", level: 90, description: "LLM interfacing" },
         { name: "Scikit-learn", level: 95, description: "Classic ML algorithms" },
         { name: "ARIMA", level: 85, description: "Time series forecasting" },
-        // { name: "Isolation Forest", level: 78, description: "Anomaly detection" },
         { name: "OpenCV", level: 80, description: "Computer vision projects" },
         { name: "Keras", level: 88, description: "Secondary DL framework" },
         { name: "CNNs & GNNs", level: 85, description: "Neural network architectures" }
@@ -48,7 +45,6 @@ export const Skills = () => {
       skills: [
         { name: "Node.js", level: 92, description: "Backend application development" },
         { name: "Flask", level: 88, description: "Python microservices" },
-        // { name: "Express.js", level: 90, description: "Web application framework" },
         { name: "REST APIs", level: 95, description: "API design & implementation" },
         { name: "Swagger", level: 85, description: "API documentation" },
         { name: "Microservices", level: 82, description: "Distributed architecture" },
@@ -80,24 +76,36 @@ export const Skills = () => {
     {
       title: "AWS Certified Cloud Practitioner",
       year: "2022",
-      icon: "☁️"
+      icon: Cloud,
+      url: "/AWS Certified Cloud Practitioner certificate.pdf"
     },
     {
       title: "AlgoExpert (100 problems)",
       year: "2022", 
-      icon: "🧮"
+      icon: Calculator,
+      url: "https://certificate.algoexpert.io/AE-6eb85aa512"
     },
     {
       title: "Machine Learning A–Z (Udemy)",
       year: "2021",
-      icon: "🤖"
+      icon: GraduationCap,
+      url: "https://www.udemy.com/certificate/UC-35514136-e75e-48f4-b0b0-e2d50866a058/"
     },
     {
       title: "Complete Python Developer (ZTM)",
       year: "2021",
-      icon: "🐍"
+      icon: Code,
+      url: "https://www.udemy.com/certificate/UC-35514136-e75e-48f4-b0b0-e2d50866a058/"
     }
   ];
+
+  const handleCertificationClick = (url: string) => {
+    if (url.startsWith('http')) {
+      window.open(url, '_blank');
+    } else {
+      window.open(url, '_blank');
+    }
+  };
 
   return (
     <PageTransition>
@@ -249,37 +257,44 @@ export const Skills = () => {
               </h2>
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {certifications.map((cert, index) => (
-                <motion.div
-                  key={index}
-                  className="group cursor-pointer"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 1.2 + index * 0.1 }}
-                  whileHover={{ 
-                    y: -10,
-                    rotateY: 5,
-                    rotateX: 5,
-                    scale: 1.02,
-                    transition: { duration: 0.3 }
-                  }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <Card className="h-full bg-white/60 dark:bg-gray-800/60 backdrop-blur-lg border border-gray-200 dark:border-gray-700 text-center group-hover:shadow-2xl group-hover:shadow-cyan-500/20 group-hover:border-cyan-400/50 transition-all duration-300">
-                    <CardContent className="p-6">
-                      <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
-                        {cert.icon}
-                      </div>
-                      <h3 className="text-lg font-bold text-gray-800 dark:text-white mb-2 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
-                        {cert.title}
-                      </h3>
-                      <p className="text-cyan-600 dark:text-cyan-400 font-semibold text-sm">
-                        {cert.year}
-                      </p>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
+              {certifications.map((cert, index) => {
+                const IconComponent = cert.icon;
+                return (
+                  <motion.div
+                    key={index}
+                    className="group cursor-pointer"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 1.2 + index * 0.1 }}
+                    whileHover={{ 
+                      y: -10,
+                      rotateY: 5,
+                      rotateX: 5,
+                      scale: 1.02,
+                      transition: { duration: 0.3 }
+                    }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => handleCertificationClick(cert.url)}
+                  >
+                    <Card className="h-full bg-white/60 dark:bg-gray-800/60 backdrop-blur-lg border border-gray-200 dark:border-gray-700 text-center group-hover:shadow-2xl group-hover:shadow-cyan-500/20 group-hover:border-cyan-400/50 transition-all duration-300">
+                      <CardContent className="p-6">
+                        <div className="mb-4 group-hover:scale-110 transition-transform duration-300 flex justify-center">
+                          <IconComponent 
+                            size={48} 
+                            className="text-purple-600 dark:text-purple-400 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors"
+                          />
+                        </div>
+                        <h3 className="text-lg font-bold text-gray-800 dark:text-white mb-2 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
+                          {cert.title}
+                        </h3>
+                        <p className="text-cyan-600 dark:text-cyan-400 font-semibold text-sm">
+                          {cert.year}
+                        </p>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                );
+              })}
             </div>
           </motion.div>
         </div>
