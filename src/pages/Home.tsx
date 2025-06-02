@@ -55,6 +55,7 @@ export const Home = () => {
                 transition={{ duration: 0.8, delay: 0.8 }}
               >
                 <motion.button
+                  onClick={() => navigate('/projects')}
                   className="px-8 py-4 bg-gradient-to-r from-purple-600 to-cyan-600 text-white rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300"
                   whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(139, 92, 246, 0.3)" }}
                   whileTap={{ scale: 0.95 }}

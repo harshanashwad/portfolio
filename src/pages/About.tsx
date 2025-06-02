@@ -124,7 +124,7 @@ export const About = () => {
           </motion.div>
 
           {/* Call to Action */}
-          <motion.div
+          {/* <motion.div
             className="text-center mb-16"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -143,7 +143,7 @@ export const About = () => {
                 Get In Touch
               </motion.button>
             </div>
-          </motion.div>
+          </motion.div> */}
         </div>
       </div>
     </PageTransition>

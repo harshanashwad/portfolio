@@ -1,7 +1,10 @@
 import { motion } from "framer-motion";
 import { PageTransition } from "../components/PageTransition";
+import { useNavigate } from "react-router-dom";
 
 export const Projects = () => {
+  const navigate = useNavigate();
+
   const projects = [
     {
       title: "Interactive Portfolio Website",
@@ -126,7 +129,7 @@ export const Projects = () => {
 
           {/* Call to Action */}
           <motion.div
-            className="text-center mt-16 mb-16"
+            className="relative z-10 text-center mt-16 mb-16"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
@@ -137,6 +140,7 @@ export const Projects = () => {
                 Let's collaborate and bring your ideas to life with cutting-edge technology and creative solutions.
               </p>
               <motion.button
+                onClick={() => navigate("/contact")}
                 className="px-8 py-4 bg-white text-purple-600 rounded-full font-semibold text-lg hover:bg-gray-100 transition-all duration-300"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
