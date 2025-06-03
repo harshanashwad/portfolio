@@ -8,32 +8,27 @@ export const Projects = () => {
   const projects = [
     {
       title: "Interactive Portfolio Website",
-      description: "A fully animated portfolio website built with React, Three.js, and Framer Motion featuring particle backgrounds and smooth transitions.",
+      description: (
+        <>
+          A fully customized, <strong>production-grade developer portfolio</strong> designed to showcase my work, skillset, and certifications in AI/ML, Data Science, and Software Engineering.
+        </>
+      ),
       tech: ["React", "Three.js", "Framer Motion", "TailwindCSS"],
       image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=500&h=300&fit=crop",
-      github: "#",
-      demo: "#"
+      github: "https://github.com/harshanashwad/portfolio",
+      demo: null
     },
     {
-      title: "Data Visualization Dashboard",
-      description: "Interactive dashboard for data visualization with real-time charts, filters, and export functionality.",
-      tech: ["React", "D3.js", "Python", "FastAPI"],
-      image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=500&h=300&fit=crop",
-      github: "#",
-      demo: "#"
-    },
-    {
-      title: "Mobile-First Web App",
-      description: "Progressive Web App with offline capabilities, push notifications, and native-like performance.",
-      tech: ["React", "PWA", "Service Workers", "IndexedDB"],
-      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=500&h=300&fit=crop",
-      github: "#",
-      demo: "#"
-    },
-    {
-      title: "AI-Powered Chat Bot",
-      description: "Intelligent chatbot with natural language processing and machine learning capabilities.",
-      tech: ["Python", "TensorFlow", "React", "WebSocket"],
+      title: "Image Denoising using Markov Random Fields",
+      description: (
+        <>
+          <ul className="list-disc list-inside space-y-1 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+            <li>Developed a toolkit for image denoising using <strong>MRF</strong>-methods like <strong>Graph Cuts, Gibbs Sampling, and ICM</strong> to handle Salt & Pepper, Gaussian, and Uniform noise.</li>
+            <li>Explored spatial priors and probabilistic inference techniques for image restoration, evaluated with metrics such as PSNR and SSIM.</li>
+          </ul>
+        </>
+      ),
+      tech: ["OpenCV", "PyTorch", "MRF", "NumPy"],
       image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?w=500&h=300&fit=crop",
       github: "#",
       demo: "#"
@@ -83,7 +78,7 @@ export const Projects = () => {
                   
                   {/* Overlay Buttons */}
                   <div className="absolute inset-0 flex items-center justify-center space-x-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <motion.a
+                    {/* <motion.a
                       href={project.github}
                       className="px-4 py-2 bg-white/90 text-gray-800 rounded-full font-semibold hover:bg-white transition-colors"
                       whileHover={{ scale: 1.05 }}
@@ -98,7 +93,31 @@ export const Projects = () => {
                       whileTap={{ scale: 0.95 }}
                     >
                       Demo
-                    </motion.a>
+                    </motion.a> */}
+                    {project.github && (
+                      <motion.a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-4 py-2 bg-white/90 text-gray-800 rounded-full font-semibold hover:bg-white transition-colors"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        GitHub
+                      </motion.a>
+                    )}
+                    {project.demo && (
+                      <motion.a
+                        href={project.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-4 py-2 bg-purple-600 text-white rounded-full font-semibold hover:bg-purple-700 transition-colors"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        Demo
+                      </motion.a>
+                    )}
                   </div>
                 </div>
 
