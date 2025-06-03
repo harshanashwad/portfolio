@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 import { PageTransition } from "../components/PageTransition";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -343,7 +344,7 @@ export const Skills = () => {
                         style={{ transformStyle: "preserve-3d" }}
                       >
                         {/* Front Side */}
-                        <Card className={`absolute inset-0 h-full ${isPythonCert && isFlipped ? 'opacity-0' : 'opacity-100'} bg-white/60 dark:bg-gray-800/60 backdrop-blur-lg border border-gray-200 dark:border-gray-700 text-center group-hover:shadow-2xl ${isPythonCert && isFlipped ? 'group-hover:shadow-cyan-500/20 group-hover:border-cyan-400/50' : 'group-hover:shadow-cyan-500/20 group-hover:border-cyan-400/50'} transition-all duration-300`}
+                        <Card className={`absolute inset-0 h-full bg-white/60 dark:bg-gray-800/60 backdrop-blur-lg border border-gray-200 dark:border-gray-700 text-center transition-all duration-300 ${isPythonCert ? (isFlipped ? 'group-hover:shadow-2xl group-hover:shadow-cyan-500/20 group-hover:border-cyan-400/50' : 'group-hover:shadow-2xl group-hover:shadow-cyan-500/20 group-hover:border-cyan-400/50') : 'group-hover:shadow-2xl group-hover:shadow-cyan-500/20 group-hover:border-cyan-400/50'}`}
                               style={{ backfaceVisibility: "hidden" }}>
                           <CardContent className="p-6">
                             <div className="mb-4 group-hover:scale-110 transition-transform duration-300 flex justify-center">
@@ -363,7 +364,7 @@ export const Skills = () => {
 
                         {/* Back Side - Only for Python certification */}
                         {isPythonCert && (
-                          <Card className={`absolute inset-0 h-full ${isFlipped ? 'opacity-100' : 'opacity-0'} bg-white/60 dark:bg-gray-800/60 backdrop-blur-lg border border-cyan-400/50 text-center shadow-2xl shadow-cyan-500/20 transition-all duration-300`}
+                          <Card className="absolute inset-0 h-full bg-white/60 dark:bg-gray-800/60 backdrop-blur-lg border border-cyan-400/50 text-center shadow-2xl shadow-cyan-500/20 transition-all duration-300"
                                 style={{ 
                                   backfaceVisibility: "hidden",
                                   transform: "rotateY(180deg)"
