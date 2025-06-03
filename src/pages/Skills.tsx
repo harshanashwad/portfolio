@@ -1,57 +1,12 @@
+
 import { motion } from "framer-motion";
 import { PageTransition } from "../components/PageTransition";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 import { Brain, BarChart3, Server, Zap, Wrench, Award, Cloud, Calculator, GraduationCap, Code } from "lucide-react";
-import { useState, useEffect } from "react";
 
 export const Skills = () => {
-  const [isFlipped, setIsFlipped] = useState(false);
-  const [displayedText, setDisplayedText] = useState("");
-  const [hoverTimeout, setHoverTimeout] = useState<NodeJS.Timeout | null>(null);
-  const description = "Mastered Python as a full-stack tool—covering OOP, web frameworks, automation, testing, and production-grade best practices. Built real-world apps and wrote clean, scalable code.";
-
-  useEffect(() => {
-    if (isFlipped) {
-      let index = 0;
-      const timer = setInterval(() => {
-        if (index <= description.length) {
-          setDisplayedText(description.slice(0, index));
-          index++;
-        } else {
-          clearInterval(timer);
-        }
-      }, 20);
-      return () => clearInterval(timer);
-    } else {
-      setDisplayedText("");
-    }
-  }, [isFlipped]);
-
-  const handleMouseEnter = () => {
-    if (hoverTimeout) {
-      clearTimeout(hoverTimeout);
-      setHoverTimeout(null);
-    }
-    setIsFlipped(true);
-  };
-
-  const handleMouseLeave = () => {
-    const timeout = setTimeout(() => {
-      setIsFlipped(false);
-    }, 1500);
-    setHoverTimeout(timeout);
-  };
-
-  const handleClick = () => {
-    if (hoverTimeout) {
-      clearTimeout(hoverTimeout);
-      setHoverTimeout(null);
-    }
-    setIsFlipped(false);
-  };
-
   const skillCategories = [
     {
       title: "Machine Learning & AI",
@@ -140,24 +95,15 @@ export const Skills = () => {
       title: "Complete Python Developer (ZTM)",
       year: "2021",
       icon: Code,
-      url: null // No URL for this certification
+      url: "https://www.udemy.com/certificate/UC-35514136-e75e-48f4-b0b0-e2d50866a058/"
     }
   ];
 
-  const handleCertificationClick = (url: string | null, index: number) => {
-    // If it's the Python certification (index 3), handle flip
-    if (index === 3) {
-      handleClick();
-      return;
-    }
-    
-    // For other certifications with URLs
-    if (url) {
-      if (url.startsWith('http')) {
-        window.open(url, '_blank');
-      } else {
-        window.open(url, '_blank');
-      }
+  const handleCertificationClick = (url: string) => {
+    if (url.startsWith('http')) {
+      window.open(url, '_blank');
+    } else {
+      window.open(url, '_blank');
     }
   };
 
@@ -313,8 +259,6 @@ export const Skills = () => {
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {certifications.map((cert, index) => {
                 const IconComponent = cert.icon;
-                const isPythonCert = index === 3;
-                
                 return (
                   <motion.div
                     key={index}
@@ -330,62 +274,24 @@ export const Skills = () => {
                       transition: { duration: 0.3 }
                     }}
                     whileTap={{ scale: 0.95 }}
-                    onClick={() => handleCertificationClick(cert.url, index)}
-                    onMouseEnter={isPythonCert ? handleMouseEnter : undefined}
-                    onMouseLeave={isPythonCert ? handleMouseLeave : undefined}
-                    style={{ perspective: "1000px" }}
+                    onClick={() => handleCertificationClick(cert.url)}
                   >
-                    <div className="relative h-full">
-                      <motion.div
-                        className="w-full h-full"
-                        animate={{ rotateY: isPythonCert && isFlipped ? 180 : 0 }}
-                        transition={{ duration: 0.6, ease: "easeInOut" }}
-                        style={{ transformStyle: "preserve-3d" }}
-                      >
-                        {/* Front Side */}
-                        <Card className={`absolute inset-0 h-full ${isPythonCert && isFlipped ? 'opacity-0' : 'opacity-100'} bg-white/60 dark:bg-gray-800/60 backdrop-blur-lg border border-gray-200 dark:border-gray-700 text-center group-hover:shadow-2xl ${isPythonCert && isFlipped ? 'group-hover:shadow-cyan-500/20 group-hover:border-cyan-400/50' : 'group-hover:shadow-cyan-500/20 group-hover:border-cyan-400/50'} transition-all duration-300`}
-                              style={{ backfaceVisibility: "hidden" }}>
-                          <CardContent className="p-6">
-                            <div className="mb-4 group-hover:scale-110 transition-transform duration-300 flex justify-center">
-                              <IconComponent 
-                                size={48} 
-                                className={`${isPythonCert && isFlipped ? 'text-cyan-600 dark:text-cyan-400' : 'text-purple-600 dark:text-purple-400 group-hover:text-cyan-600 dark:group-hover:text-cyan-400'} transition-colors`}
-                              />
-                            </div>
-                            <h3 className={`text-lg font-bold text-gray-800 dark:text-white mb-2 ${isPythonCert && isFlipped ? 'text-cyan-600 dark:text-cyan-400' : 'group-hover:text-cyan-600 dark:group-hover:text-cyan-400'} transition-colors`}>
-                              {cert.title}
-                            </h3>
-                            <p className={`${isPythonCert && isFlipped ? 'text-cyan-600 dark:text-cyan-400' : 'text-purple-600 dark:text-purple-400 group-hover:text-cyan-600 dark:group-hover:text-cyan-400'} font-semibold text-sm transition-colors`}>
-                              {cert.year}
-                            </p>
-                          </CardContent>
-                        </Card>
-
-                        {/* Back Side - Only for Python certification */}
-                        {isPythonCert && (
-                          <Card className={`absolute inset-0 h-full ${isFlipped ? 'opacity-100' : 'opacity-0'} bg-white/60 dark:bg-gray-800/60 backdrop-blur-lg border border-cyan-400/50 text-center shadow-2xl shadow-cyan-500/20 transition-all duration-300`}
-                                style={{ 
-                                  backfaceVisibility: "hidden",
-                                  transform: "rotateY(180deg)"
-                                }}>
-                            <CardContent className="p-6 flex items-center justify-center h-full">
-                              <div className="text-center">
-                                <div className="mb-4 flex justify-center">
-                                  <IconComponent 
-                                    size={48} 
-                                    className="text-cyan-600 dark:text-cyan-400"
-                                  />
-                                </div>
-                                <p className="text-sm text-cyan-600 dark:text-cyan-400 font-medium leading-relaxed">
-                                  {displayedText}
-                                  <span className="animate-pulse">|</span>
-                                </p>
-                              </div>
-                            </CardContent>
-                          </Card>
-                        )}
-                      </motion.div>
-                    </div>
+                    <Card className="h-full bg-white/60 dark:bg-gray-800/60 backdrop-blur-lg border border-gray-200 dark:border-gray-700 text-center group-hover:shadow-2xl group-hover:shadow-cyan-500/20 group-hover:border-cyan-400/50 transition-all duration-300">
+                      <CardContent className="p-6">
+                        <div className="mb-4 group-hover:scale-110 transition-transform duration-300 flex justify-center">
+                          <IconComponent 
+                            size={48} 
+                            className="text-purple-600 dark:text-purple-400 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors"
+                          />
+                        </div>
+                        <h3 className="text-lg font-bold text-gray-800 dark:text-white mb-2 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
+                          {cert.title}
+                        </h3>
+                        <p className="text-purple-600 dark:text-purple-400 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 font-semibold text-sm transition-colors">
+                          {cert.year}
+                        </p>
+                      </CardContent>
+                    </Card>
                   </motion.div>
                 );
               })}
