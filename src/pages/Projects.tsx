@@ -43,6 +43,21 @@ export const Projects = () => {
   return (
     <PageTransition>
       <div className="min-h-screen pt-20 px-6">
+        {/* Custom CSS for pulse glow animation */}
+        <style>
+          {`
+            @keyframes pulse-glow {
+              0%, 100% {
+                box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+                transform: scale(1);
+              }
+              50% {
+                box-shadow: 0 0 30px rgba(59, 130, 246, 0.8);
+                transform: scale(1.05);
+              }
+            }
+          `}
+        </style>
         <div className="max-w-7xl mx-auto">
           {/* Header */}
           <motion.div
@@ -176,20 +191,6 @@ export const Projects = () => {
             </div>
           </motion.div>
         </div>
-
-        {/* Custom CSS for pulse glow animation */}
-        <style jsx>{`
-          @keyframes pulse-glow {
-            0%, 100% {
-              box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
-              transform: scale(1);
-            }
-            50% {
-              box-shadow: 0 0 30px rgba(59, 130, 246, 0.8);
-              transform: scale(1.05);
-            }
-          }
-        `}</style>
       </div>
     </PageTransition>
   );
