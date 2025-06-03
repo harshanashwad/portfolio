@@ -30,8 +30,8 @@ export const Projects = () => {
       ),
       tech: ["OpenCV", "PyTorch", "MRF", "NumPy"],
       image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?w=500&h=300&fit=crop",
-      github: "#",
-      demo: "#"
+      github: "https://github.com/harshanashwad/MRF-Variants-for-Noise-Reduction",
+      demo: null
     }
   ];
 

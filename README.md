@@ -12,4 +12,4 @@ Originally bootstrapped from a lightweight starter template, I have heavily rest
 
 This is not just a static site—it's a technically expressive, component-driven project reflecting both engineering depth and design sensibility.
 
-> Visit: [harshanashwad.web.app](https://harshan-ashwad.web.app)
+> Visit: [harshan-ashwad.web.app](https://harshan-ashwad.web.app)
