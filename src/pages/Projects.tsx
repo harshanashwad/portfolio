@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 import { PageTransition } from "../components/PageTransition";
 import { useNavigate } from "react-router-dom";
@@ -14,6 +15,8 @@ export const Projects = () => {
         </>
       ),
       tech: ["React", "Three.js", "Framer Motion", "TailwindCSS"],
+      domain: "Web App",
+      domainColor: "from-blue-500 to-cyan-500",
       image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=500&h=300&fit=crop",
       github: "https://github.com/harshanashwad/portfolio",
       demo: null
@@ -29,6 +32,8 @@ export const Projects = () => {
         </>
       ),
       tech: ["OpenCV", "PyTorch", "MRF", "NumPy"],
+      domain: "Computer Vision",
+      domainColor: "from-emerald-500 to-teal-500",
       image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?w=500&h=300&fit=crop",
       github: "https://github.com/harshanashwad/MRF-Variants-for-Noise-Reduction",
       demo: null
@@ -67,6 +72,24 @@ export const Projects = () => {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 whileHover={{ y: -10 }}
               >
+                {/* Domain Tag */}
+                <motion.div
+                  className="absolute top-4 right-4 z-10"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}
+                >
+                  <div
+                    className={`px-3 py-1 rounded-full text-xs font-bold text-white bg-gradient-to-r ${project.domainColor} shadow-lg`}
+                    style={{
+                      animation: 'pulse-glow 2s ease-in-out infinite',
+                      boxShadow: '0 0 20px rgba(59, 130, 246, 0.5)'
+                    }}
+                  >
+                    {project.domain}
+                  </div>
+                </motion.div>
+
                 {/* Project Image */}
                 <div className="relative overflow-hidden">
                   <img
@@ -78,22 +101,6 @@ export const Projects = () => {
                   
                   {/* Overlay Buttons */}
                   <div className="absolute inset-0 flex items-center justify-center space-x-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    {/* <motion.a
-                      href={project.github}
-                      className="px-4 py-2 bg-white/90 text-gray-800 rounded-full font-semibold hover:bg-white transition-colors"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      GitHub
-                    </motion.a>
-                    <motion.a
-                      href={project.demo}
-                      className="px-4 py-2 bg-purple-600 text-white rounded-full font-semibold hover:bg-purple-700 transition-colors"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      Demo
-                    </motion.a> */}
                     {project.github && (
                       <motion.a
                         href={project.github}
@@ -169,6 +176,20 @@ export const Projects = () => {
             </div>
           </motion.div>
         </div>
+
+        {/* Custom CSS for pulse glow animation */}
+        <style jsx>{`
+          @keyframes pulse-glow {
+            0%, 100% {
+              box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+              transform: scale(1);
+            }
+            50% {
+              box-shadow: 0 0 30px rgba(59, 130, 246, 0.8);
+              transform: scale(1.05);
+            }
+          }
+        `}</style>
       </div>
     </PageTransition>
   );
