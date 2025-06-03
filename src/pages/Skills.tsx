@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 import { Brain, BarChart3, Server, Zap, Wrench, Award, Cloud, Calculator, GraduationCap, Code } from "lucide-react";
+import { FlippableCard } from "../components/FlippableCard";
 
 export const Skills = () => {
   const skillCategories = [
@@ -91,12 +92,12 @@ export const Skills = () => {
       icon: GraduationCap,
       url: "https://www.udemy.com/certificate/UC-35514136-e75e-48f4-b0b0-e2d50866a058/"
     },
-    {
-      title: "Complete Python Developer (ZTM)",
-      year: "2021",
-      icon: Code,
-      url: "https://www.udemy.com/certificate/UC-35514136-e75e-48f4-b0b0-e2d50866a058/"
-    }
+    // {
+    //   title: "Complete Python Developer (ZTM)",
+    //   year: "2021",
+    //   icon: Code,
+    //   url: "https://www.udemy.com/certificate/UC-35514136-e75e-48f4-b0b0-e2d50866a058/"
+    // }
   ];
 
   const handleCertificationClick = (url: string) => {
@@ -295,6 +296,7 @@ export const Skills = () => {
                   </motion.div>
                 );
               })}
+              <FlippableCard />
             </div>
           </motion.div>
         </div>
