@@ -296,7 +296,7 @@ export const Skills = () => {
                   </motion.div>
                 );
               })}
-              <FlippableCard />
+              {/* <FlippableCard /> */}
             </div>
           </motion.div>
         </div>
