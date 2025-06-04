@@ -8,6 +8,23 @@ export const Projects = () => {
 
   const projects = [
     {
+      title: "Image Denoising using Markov Random Fields",
+      description: (
+        <>
+          <ul className="list-disc list-inside space-y-1 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+            <li>Developed a toolkit for image denoising using <strong>MRF</strong>-methods like <strong>Graph Cuts, Gibbs Sampling, and ICM</strong> to handle Salt & Pepper, Gaussian, and Uniform noise.</li>
+            <li>Explored spatial priors and probabilistic inference techniques for image restoration, evaluated with metrics such as PSNR and SSIM.</li>
+          </ul>
+        </>
+      ),
+      tech: ["OpenCV", "PyTorch", "MRF", "NumPy"],
+      domain: "Computer Vision",
+      domainColor: "from-blue-500 to-cyan-500",
+      image: "/image denoising project cover.png",
+      github: "https://github.com/harshanashwad/MRF-Variants-for-Noise-Reduction",
+      demo: null
+    },
+    {
       title: "Interactive Portfolio Website",
       description: (
         <>
@@ -21,23 +38,7 @@ export const Projects = () => {
       github: "https://github.com/harshanashwad/portfolio",
       demo: null
     },
-    {
-      title: "Image Denoising using Markov Random Fields",
-      description: (
-        <>
-          <ul className="list-disc list-inside space-y-1 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
-            <li>Developed a toolkit for image denoising using <strong>MRF</strong>-methods like <strong>Graph Cuts, Gibbs Sampling, and ICM</strong> to handle Salt & Pepper, Gaussian, and Uniform noise.</li>
-            <li>Explored spatial priors and probabilistic inference techniques for image restoration, evaluated with metrics such as PSNR and SSIM.</li>
-          </ul>
-        </>
-      ),
-      tech: ["OpenCV", "PyTorch", "MRF", "NumPy"],
-      domain: "Computer Vision",
-      domainColor: "from-emerald-500 to-teal-500",
-      image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?w=500&h=300&fit=crop",
-      github: "https://github.com/harshanashwad/MRF-Variants-for-Noise-Reduction",
-      demo: null
-    }
+    
   ];
 
   return (
@@ -72,7 +73,7 @@ export const Projects = () => {
               </span>
             </h1>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              A collection of projects that showcase my skills and passion for creating innovative solutions
+              Selected work highlighting my skills across software, AI, and data-driven development
             </p>
           </motion.div>
 
