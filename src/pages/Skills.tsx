@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { PageTransition } from "../components/PageTransition";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -257,13 +256,13 @@ export const Skills = () => {
                 Certifications
               </h2>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-6xl mx-auto">
               {certifications.map((cert, index) => {
                 const IconComponent = cert.icon;
                 return (
                   <motion.div
                     key={index}
-                    className="group cursor-pointer"
+                    className="group cursor-pointer w-full"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 1.2 + index * 0.1 }}
@@ -277,7 +276,7 @@ export const Skills = () => {
                     whileTap={{ scale: 0.95 }}
                     onClick={() => handleCertificationClick(cert.url)}
                   >
-                    <Card className="h-full bg-white/60 dark:bg-gray-800/60 backdrop-blur-lg border border-gray-200 dark:border-gray-700 text-center group-hover:shadow-2xl group-hover:shadow-cyan-500/20 group-hover:border-cyan-400/50 transition-all duration-300">
+                    <Card className="h-full w-full bg-white/60 dark:bg-gray-800/60 backdrop-blur-lg border border-gray-200 dark:border-gray-700 text-center group-hover:shadow-2xl group-hover:shadow-cyan-500/20 group-hover:border-cyan-400/50 transition-all duration-300">
                       <CardContent className="p-6">
                         <div className="mb-4 group-hover:scale-110 transition-transform duration-300 flex justify-center">
                           <IconComponent 
