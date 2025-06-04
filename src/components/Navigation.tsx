@@ -27,11 +27,23 @@ export const Navigation = () => {
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Logo */}
-        <motion.div
+        {/* <motion.div
           className="text-2xl font-bold bg-gradient-to-r from-purple-500 to-cyan-500 bg-clip-text text-transparent"
           whileHover={{ scale: 1.05 }}
         >
           Portfolio
+        </motion.div>
+         */}
+
+        <motion.div
+          whileHover={{ scale: 1.05 }}
+          className="cursor-pointer"
+        >
+          <img
+            src="/favicon.png" // 👈 Make sure the image is in your `public/` folder
+            alt="Logo"
+            className="h-20 w-auto"
+          />
         </motion.div>
 
         {/* Desktop Navigation */}
