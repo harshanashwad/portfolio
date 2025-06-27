@@ -45,9 +45,9 @@ const AnimatedPyramid = () => {
     }
   });
 
-  // Create pyramid geometry with more segments for smoother edges
+  // Create pyramid geometry with 4 sides for classic pyramid appearance
   const pyramidGeometry = useMemo(() => {
-    const geometry = new THREE.ConeGeometry(1, 1.5, 16); // Increased segments from 4 to 16
+    const geometry = new THREE.ConeGeometry(1, 1.5, 4); // Back to 4 sides for pyramid shape
     return geometry;
   }, []);
 
