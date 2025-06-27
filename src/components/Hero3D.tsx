@@ -1,4 +1,3 @@
-
 import { useRef, Suspense, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
@@ -65,21 +64,12 @@ const AnimatedPyramid = () => {
           opacity={0.9}
         />
       </mesh>
-      {/* Enhanced outer glow pyramid */}
+      {/* Single subtle glow layer close to surface */}
       <mesh position={[-3, 0, 0]} geometry={pyramidGeometry}>
         <meshBasicMaterial 
           color={colors.glow}
           transparent
-          opacity={0.3}
-          side={THREE.BackSide}
-        />
-      </mesh>
-      {/* Additional glow layer */}
-      <mesh position={[-3, 0, 0]} geometry={pyramidGeometry}>
-        <meshBasicMaterial 
-          color={colors.glow}
-          transparent
-          opacity={0.15}
+          opacity={0.2}
           side={THREE.BackSide}
         />
       </mesh>
@@ -140,22 +130,13 @@ const AnimatedBox = () => {
           opacity={0.9}
         />
       </mesh>
-      {/* Enhanced outer glow box with multiple layers */}
+      {/* Single subtle glow layer close to surface */}
       <mesh position={[3, 0, 0]}>
-        <boxGeometry args={[2.2, 2.2, 2.2]} />
+        <boxGeometry args={[1.7, 1.7, 1.7]} />
         <meshBasicMaterial 
           color={colors.glow}
           transparent
-          opacity={0.25}
-          side={THREE.BackSide}
-        />
-      </mesh>
-      <mesh position={[3, 0, 0]}>
-        <boxGeometry args={[2.8, 2.8, 2.8]} />
-        <meshBasicMaterial 
-          color={colors.glow}
-          transparent
-          opacity={0.12}
+          opacity={0.2}
           side={THREE.BackSide}
         />
       </mesh>
@@ -216,22 +197,13 @@ const AnimatedTorus = () => {
           opacity={0.9}
         />
       </mesh>
-      {/* Enhanced outer glow torus with multiple layers */}
+      {/* Single subtle glow layer close to surface */}
       <mesh position={[0, 0, 0]}>
-        <torusGeometry args={[1.6, 0.5, 12, 80]} />
+        <torusGeometry args={[1.2, 0.4, 12, 80]} />
         <meshBasicMaterial 
           color={colors.glow}
           transparent
-          opacity={0.25}
-          side={THREE.BackSide}
-        />
-      </mesh>
-      <mesh position={[0, 0, 0]}>
-        <torusGeometry args={[2.0, 0.6, 10, 60]} />
-        <meshBasicMaterial 
-          color={colors.glow}
-          transparent
-          opacity={0.12}
+          opacity={0.2}
           side={THREE.BackSide}
         />
       </mesh>
