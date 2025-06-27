@@ -6,26 +6,26 @@ import { motion } from 'framer-motion';
 import { useTheme } from '../contexts/ThemeContext';
 import * as THREE from 'three';
 
-const AnimatedSphere = () => {
+const AnimatedPyramid = () => {
   const meshRef = useRef<THREE.Mesh>(null);
   const { theme } = useTheme();
 
-  // Dynamic color selection based on theme
+  // Dynamic color selection based on theme with brighter, more vibrant colors
   const colors = useMemo(() => {
     const darkModeColors = [
-      { main: '#8b5cf6', emissive: '#4c1d95' }, // Purple
-      { main: '#06b6d4', emissive: '#0e7490' }, // Cyan
-      { main: '#ec4899', emissive: '#be185d' }, // Pink
-      { main: '#10b981', emissive: '#047857' }, // Emerald
-      { main: '#f59e0b', emissive: '#d97706' }, // Amber
+      { main: '#a855f7', emissive: '#7c3aed', glow: '#8b5cf6' }, // Bright Purple
+      { main: '#22d3ee', emissive: '#0891b2', glow: '#06b6d4' }, // Bright Cyan
+      { main: '#f472b6', emissive: '#ec4899', glow: '#f472b6' }, // Bright Pink
+      { main: '#34d399', emissive: '#10b981', glow: '#34d399' }, // Bright Emerald
+      { main: '#fbbf24', emissive: '#f59e0b', glow: '#fbbf24' }, // Bright Amber
     ];
     
     const lightModeColors = [
-      { main: '#7c3aed', emissive: '#5b21b6' }, // Purple
-      { main: '#0891b2', emissive: '#0e7490' }, // Cyan
-      { main: '#db2777', emissive: '#be185d' }, // Pink
-      { main: '#059669', emissive: '#047857' }, // Emerald
-      { main: '#d97706', emissive: '#92400e' }, // Amber
+      { main: '#9333ea', emissive: '#7c3aed', glow: '#a855f7' }, // Bright Purple
+      { main: '#0ea5e9', emissive: '#0284c7', glow: '#22d3ee' }, // Bright Blue
+      { main: '#e11d48', emissive: '#be185d', glow: '#f43f5e' }, // Bright Rose
+      { main: '#059669', emissive: '#047857', glow: '#10b981' }, // Bright Emerald
+      { main: '#ea580c', emissive: '#dc2626', glow: '#f97316' }, // Bright Orange
     ];
     
     const colorPalette = theme === 'dark' ? darkModeColors : lightModeColors;
@@ -38,31 +38,48 @@ const AnimatedSphere = () => {
       meshRef.current.rotation.y = state.clock.elapsedTime * 0.3;
       meshRef.current.position.y = Math.sin(state.clock.elapsedTime) * 0.2;
       
-      // Pulsing glow effect
+      // Enhanced pulsing glow effect
       const pulseFactor = (Math.sin(state.clock.elapsedTime * 2) + 1) * 0.5;
       if (meshRef.current.material) {
-        (meshRef.current.material as THREE.MeshStandardMaterial).emissiveIntensity = 0.3 + pulseFactor * 0.4;
+        (meshRef.current.material as THREE.MeshStandardMaterial).emissiveIntensity = 0.6 + pulseFactor * 0.8;
       }
     }
   });
 
+  // Create pyramid geometry
+  const pyramidGeometry = useMemo(() => {
+    const geometry = new THREE.ConeGeometry(1, 1.5, 4);
+    return geometry;
+  }, []);
+
   return (
     <group>
-      <mesh ref={meshRef} position={[-3, 0, 0]}>
-        <sphereGeometry args={[1, 32, 32]} />
+      <mesh ref={meshRef} position={[-3, 0, 0]} geometry={pyramidGeometry}>
         <meshStandardMaterial 
           color={colors.main}
           emissive={colors.emissive}
-          emissiveIntensity={0.3}
+          emissiveIntensity={0.6}
+          metalness={0.1}
+          roughness={0.1}
+          transparent={true}
+          opacity={0.9}
         />
       </mesh>
-      {/* Outer glow sphere */}
-      <mesh position={[-3, 0, 0]}>
-        <sphereGeometry args={[1.3, 16, 16]} />
+      {/* Enhanced outer glow pyramid */}
+      <mesh position={[-3, 0, 0]} geometry={pyramidGeometry}>
         <meshBasicMaterial 
-          color={colors.main}
+          color={colors.glow}
           transparent
-          opacity={0.1}
+          opacity={0.3}
+          side={THREE.BackSide}
+        />
+      </mesh>
+      {/* Additional glow layer */}
+      <mesh position={[-3, 0, 0]} geometry={pyramidGeometry}>
+        <meshBasicMaterial 
+          color={colors.glow}
+          transparent
+          opacity={0.15}
           side={THREE.BackSide}
         />
       </mesh>
@@ -76,19 +93,19 @@ const AnimatedBox = () => {
 
   const colors = useMemo(() => {
     const darkModeColors = [
-      { main: '#8b5cf6', emissive: '#4c1d95' },
-      { main: '#06b6d4', emissive: '#0e7490' },
-      { main: '#ec4899', emissive: '#be185d' },
-      { main: '#10b981', emissive: '#047857' },
-      { main: '#f59e0b', emissive: '#d97706' },
+      { main: '#a855f7', emissive: '#7c3aed', glow: '#8b5cf6' },
+      { main: '#22d3ee', emissive: '#0891b2', glow: '#06b6d4' },
+      { main: '#f472b6', emissive: '#ec4899', glow: '#f472b6' },
+      { main: '#34d399', emissive: '#10b981', glow: '#34d399' },
+      { main: '#fbbf24', emissive: '#f59e0b', glow: '#fbbf24' },
     ];
     
     const lightModeColors = [
-      { main: '#7c3aed', emissive: '#5b21b6' },
-      { main: '#0891b2', emissive: '#0e7490' },
-      { main: '#db2777', emissive: '#be185d' },
-      { main: '#059669', emissive: '#047857' },
-      { main: '#d97706', emissive: '#92400e' },
+      { main: '#9333ea', emissive: '#7c3aed', glow: '#a855f7' },
+      { main: '#0ea5e9', emissive: '#0284c7', glow: '#22d3ee' },
+      { main: '#e11d48', emissive: '#be185d', glow: '#f43f5e' },
+      { main: '#059669', emissive: '#047857', glow: '#10b981' },
+      { main: '#ea580c', emissive: '#dc2626', glow: '#f97316' },
     ];
     
     const colorPalette = theme === 'dark' ? darkModeColors : lightModeColors;
@@ -101,10 +118,10 @@ const AnimatedBox = () => {
       meshRef.current.rotation.y = state.clock.elapsedTime * 0.6;
       meshRef.current.position.y = Math.cos(state.clock.elapsedTime) * 0.3;
       
-      // Pulsing glow effect
+      // Enhanced pulsing glow effect
       const pulseFactor = (Math.sin(state.clock.elapsedTime * 1.8 + 1) + 1) * 0.5;
       if (meshRef.current.material) {
-        (meshRef.current.material as THREE.MeshStandardMaterial).emissiveIntensity = 0.3 + pulseFactor * 0.4;
+        (meshRef.current.material as THREE.MeshStandardMaterial).emissiveIntensity = 0.6 + pulseFactor * 0.8;
       }
     }
   });
@@ -116,16 +133,29 @@ const AnimatedBox = () => {
         <meshStandardMaterial 
           color={colors.main}
           emissive={colors.emissive}
-          emissiveIntensity={0.3}
+          emissiveIntensity={0.6}
+          metalness={0.1}
+          roughness={0.1}
+          transparent={true}
+          opacity={0.9}
         />
       </mesh>
-      {/* Outer glow box */}
+      {/* Enhanced outer glow box with multiple layers */}
       <mesh position={[3, 0, 0]}>
-        <boxGeometry args={[1.9, 1.9, 1.9]} />
+        <boxGeometry args={[2.2, 2.2, 2.2]} />
         <meshBasicMaterial 
-          color={colors.main}
+          color={colors.glow}
           transparent
-          opacity={0.08}
+          opacity={0.25}
+          side={THREE.BackSide}
+        />
+      </mesh>
+      <mesh position={[3, 0, 0]}>
+        <boxGeometry args={[2.8, 2.8, 2.8]} />
+        <meshBasicMaterial 
+          color={colors.glow}
+          transparent
+          opacity={0.12}
           side={THREE.BackSide}
         />
       </mesh>
@@ -139,19 +169,19 @@ const AnimatedTorus = () => {
 
   const colors = useMemo(() => {
     const darkModeColors = [
-      { main: '#8b5cf6', emissive: '#4c1d95' },
-      { main: '#06b6d4', emissive: '#0e7490' },
-      { main: '#ec4899', emissive: '#be185d' },
-      { main: '#10b981', emissive: '#047857' },
-      { main: '#f59e0b', emissive: '#d97706' },
+      { main: '#a855f7', emissive: '#7c3aed', glow: '#8b5cf6' },
+      { main: '#22d3ee', emissive: '#0891b2', glow: '#06b6d4' },
+      { main: '#f472b6', emissive: '#ec4899', glow: '#f472b6' },
+      { main: '#34d399', emissive: '#10b981', glow: '#34d399' },
+      { main: '#fbbf24', emissive: '#f59e0b', glow: '#fbbf24' },
     ];
     
     const lightModeColors = [
-      { main: '#7c3aed', emissive: '#5b21b6' },
-      { main: '#0891b2', emissive: '#0e7490' },
-      { main: '#db2777', emissive: '#be185d' },
-      { main: '#059669', emissive: '#047857' },
-      { main: '#d97706', emissive: '#92400e' },
+      { main: '#9333ea', emissive: '#7c3aed', glow: '#a855f7' },
+      { main: '#0ea5e9', emissive: '#0284c7', glow: '#22d3ee' },
+      { main: '#e11d48', emissive: '#be185d', glow: '#f43f5e' },
+      { main: '#059669', emissive: '#047857', glow: '#10b981' },
+      { main: '#ea580c', emissive: '#dc2626', glow: '#f97316' },
     ];
     
     const colorPalette = theme === 'dark' ? darkModeColors : lightModeColors;
@@ -164,10 +194,10 @@ const AnimatedTorus = () => {
       meshRef.current.rotation.z = state.clock.elapsedTime * 0.5;
       meshRef.current.position.y = Math.sin(state.clock.elapsedTime * 0.8) * 0.4;
       
-      // Pulsing glow effect
+      // Enhanced pulsing glow effect
       const pulseFactor = (Math.sin(state.clock.elapsedTime * 2.2 + 2) + 1) * 0.5;
       if (meshRef.current.material) {
-        (meshRef.current.material as THREE.MeshStandardMaterial).emissiveIntensity = 0.3 + pulseFactor * 0.4;
+        (meshRef.current.material as THREE.MeshStandardMaterial).emissiveIntensity = 0.6 + pulseFactor * 0.8;
       }
     }
   });
@@ -179,16 +209,29 @@ const AnimatedTorus = () => {
         <meshStandardMaterial 
           color={colors.main}
           emissive={colors.emissive}
-          emissiveIntensity={0.3}
+          emissiveIntensity={0.6}
+          metalness={0.1}
+          roughness={0.1}
+          transparent={true}
+          opacity={0.9}
         />
       </mesh>
-      {/* Outer glow torus */}
+      {/* Enhanced outer glow torus with multiple layers */}
       <mesh position={[0, 0, 0]}>
-        <torusGeometry args={[1.4, 0.4, 12, 80]} />
+        <torusGeometry args={[1.6, 0.5, 12, 80]} />
         <meshBasicMaterial 
-          color={colors.main}
+          color={colors.glow}
           transparent
-          opacity={0.06}
+          opacity={0.25}
+          side={THREE.BackSide}
+        />
+      </mesh>
+      <mesh position={[0, 0, 0]}>
+        <torusGeometry args={[2.0, 0.6, 10, 60]} />
+        <meshBasicMaterial 
+          color={colors.glow}
+          transparent
+          opacity={0.12}
           side={THREE.BackSide}
         />
       </mesh>
@@ -201,12 +244,12 @@ const Scene = () => {
   
   return (
     <>
-      <ambientLight intensity={theme === 'dark' ? 0.2 : 0.4} />
-      <pointLight position={[10, 10, 10]} intensity={theme === 'dark' ? 0.8 : 1.2} />
-      <pointLight position={[-10, -10, -10]} intensity={0.4} color="#8b5cf6" />
-      <pointLight position={[0, 5, 5]} intensity={0.3} color="#06b6d4" />
+      <ambientLight intensity={theme === 'dark' ? 0.3 : 0.5} />
+      <pointLight position={[10, 10, 10]} intensity={theme === 'dark' ? 1.2 : 1.5} />
+      <pointLight position={[-10, -10, -10]} intensity={0.6} color="#a855f7" />
+      <pointLight position={[0, 5, 5]} intensity={0.5} color="#22d3ee" />
       
-      <AnimatedSphere />
+      <AnimatedPyramid />
       <AnimatedBox />
       <AnimatedTorus />
       
