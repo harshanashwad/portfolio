@@ -1,3 +1,4 @@
+
 import { useRef, Suspense, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
@@ -45,35 +46,24 @@ const AnimatedPyramid = () => {
     }
   });
 
-  // Create pyramid geometry
+  // Create pyramid geometry with more segments for smoother edges
   const pyramidGeometry = useMemo(() => {
-    const geometry = new THREE.ConeGeometry(1, 1.5, 4);
+    const geometry = new THREE.ConeGeometry(1, 1.5, 16); // Increased segments from 4 to 16
     return geometry;
   }, []);
 
   return (
-    <group>
-      <mesh ref={meshRef} position={[-3, 0, 0]} geometry={pyramidGeometry}>
-        <meshStandardMaterial 
-          color={colors.main}
-          emissive={colors.emissive}
-          emissiveIntensity={0.6}
-          metalness={0.1}
-          roughness={0.1}
-          transparent={true}
-          opacity={0.9}
-        />
-      </mesh>
-      {/* Single subtle glow layer close to surface */}
-      <mesh position={[-3, 0, 0]} geometry={pyramidGeometry}>
-        <meshBasicMaterial 
-          color={colors.glow}
-          transparent
-          opacity={0.2}
-          side={THREE.BackSide}
-        />
-      </mesh>
-    </group>
+    <mesh ref={meshRef} position={[-3, 0, 0]} geometry={pyramidGeometry}>
+      <meshStandardMaterial 
+        color={colors.main}
+        emissive={colors.emissive}
+        emissiveIntensity={0.6}
+        metalness={0.1}
+        roughness={0.1}
+        transparent={true}
+        opacity={0.9}
+      />
+    </mesh>
   );
 };
 
@@ -116,31 +106,24 @@ const AnimatedBox = () => {
     }
   });
 
+  // Create rounded box geometry
+  const roundedBoxGeometry = useMemo(() => {
+    const geometry = new THREE.RoundedBoxGeometry(1.5, 1.5, 1.5, 8, 0.1); // Added rounding
+    return geometry;
+  }, []);
+
   return (
-    <group>
-      <mesh ref={meshRef} position={[3, 0, 0]}>
-        <boxGeometry args={[1.5, 1.5, 1.5]} />
-        <meshStandardMaterial 
-          color={colors.main}
-          emissive={colors.emissive}
-          emissiveIntensity={0.6}
-          metalness={0.1}
-          roughness={0.1}
-          transparent={true}
-          opacity={0.9}
-        />
-      </mesh>
-      {/* Single subtle glow layer close to surface */}
-      <mesh position={[3, 0, 0]}>
-        <boxGeometry args={[1.7, 1.7, 1.7]} />
-        <meshBasicMaterial 
-          color={colors.glow}
-          transparent
-          opacity={0.2}
-          side={THREE.BackSide}
-        />
-      </mesh>
-    </group>
+    <mesh ref={meshRef} position={[3, 0, 0]} geometry={roundedBoxGeometry}>
+      <meshStandardMaterial 
+        color={colors.main}
+        emissive={colors.emissive}
+        emissiveIntensity={0.6}
+        metalness={0.1}
+        roughness={0.1}
+        transparent={true}
+        opacity={0.9}
+      />
+    </mesh>
   );
 };
 
@@ -184,30 +167,18 @@ const AnimatedTorus = () => {
   });
 
   return (
-    <group>
-      <mesh ref={meshRef} position={[0, 0, 0]}>
-        <torusGeometry args={[1, 0.3, 16, 100]} />
-        <meshStandardMaterial 
-          color={colors.main}
-          emissive={colors.emissive}
-          emissiveIntensity={0.6}
-          metalness={0.1}
-          roughness={0.1}
-          transparent={true}
-          opacity={0.9}
-        />
-      </mesh>
-      {/* Single subtle glow layer close to surface */}
-      <mesh position={[0, 0, 0]}>
-        <torusGeometry args={[1.2, 0.4, 12, 80]} />
-        <meshBasicMaterial 
-          color={colors.glow}
-          transparent
-          opacity={0.2}
-          side={THREE.BackSide}
-        />
-      </mesh>
-    </group>
+    <mesh ref={meshRef} position={[0, 0, 0]}>
+      <torusGeometry args={[1, 0.3, 16, 100]} />
+      <meshStandardMaterial 
+        color={colors.main}
+        emissive={colors.emissive}
+        emissiveIntensity={0.6}
+        metalness={0.1}
+        roughness={0.1}
+        transparent={true}
+        opacity={0.9}
+      />
+    </mesh>
   );
 };
 
