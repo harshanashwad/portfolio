@@ -1,4 +1,3 @@
-
 import { useRef, Suspense, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
@@ -106,9 +105,9 @@ const AnimatedBox = () => {
     }
   });
 
-  // Create rounded box geometry
+  // Create rounded box geometry using subdivisions for smoother appearance
   const roundedBoxGeometry = useMemo(() => {
-    const geometry = new THREE.RoundedBoxGeometry(1.5, 1.5, 1.5, 8, 0.1); // Added rounding
+    const geometry = new THREE.BoxGeometry(1.5, 1.5, 1.5, 8, 8, 8); // Added subdivisions for smoother look
     return geometry;
   }, []);
 
