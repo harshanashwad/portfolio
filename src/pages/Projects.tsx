@@ -151,7 +151,7 @@ export const Projects = () => {
                         href={project.project_url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="px-4 py-2 bg-green-600 text-white rounded-full font-semibold hover:bg-green-700 transition-colors"
+                        className="px-4 py-2 bg-purple-600 text-white rounded-full font-semibold hover:bg-purple-700 transition-colors"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                       >
