@@ -8,6 +8,20 @@ export const Projects = () => {
 
   const projects = [
     {
+      title: "ML Prediction Explainer",
+      description: (
+        <>
+            Upload. Train. Explain. A visual ML explainer app that automates training and delivers model explanations using <strong> SHAP </strong>  for fast, intuitive prediction insights on user datasets.
+        </>
+      ),
+      tech: ["FastAPI", "SHAP", "scikit-learn", "React", "TypeScript"],
+      domain: "Explainable AI",
+      domainColor: "from-blue-500 to-cyan-500",
+      image: "/ml-prediction-explainer_cover.jpg", // You might want to add an actual screenshot
+      github: "https://github.com/harshanashwad/ml-prediction-explainer",
+      demo: null
+    },
+    {
       title: "Image Denoising using Markov Random Fields",
       description: (
         <>
