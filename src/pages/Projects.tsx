@@ -17,8 +17,9 @@ export const Projects = () => {
       tech: ["FastAPI", "SHAP", "scikit-learn", "React", "TypeScript"],
       domain: "Explainable AI",
       domainColor: "from-blue-500 to-cyan-500",
-      image: "/ml-prediction-explainer_cover.jpg", // You might want to add an actual screenshot
+      image: "/ml-prediction-explainer_cover.jpg",
       github: "https://github.com/harshanashwad/ml-prediction-explainer",
+      project_url: "https://mlpeek.vercel.app/",
       demo: null
     },
     {
@@ -36,6 +37,7 @@ export const Projects = () => {
       domainColor: "from-blue-500 to-cyan-500",
       image: "/image denoising project cover.png",
       github: "https://github.com/harshanashwad/MRF-Variants-for-Noise-Reduction",
+      project_url: null,
       demo: null
     },
     {
@@ -50,6 +52,7 @@ export const Projects = () => {
       domainColor: "from-blue-500 to-cyan-500",
       image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=500&h=300&fit=crop",
       github: "https://github.com/harshanashwad/portfolio",
+      project_url: null,
       demo: null
     },
     
@@ -141,6 +144,18 @@ export const Projects = () => {
                         whileTap={{ scale: 0.95 }}
                       >
                         GitHub
+                      </motion.a>
+                    )}
+                    {project.project_url && (
+                      <motion.a
+                        href={project.project_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-4 py-2 bg-green-600 text-white rounded-full font-semibold hover:bg-green-700 transition-colors"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        Live Demo
                       </motion.a>
                     )}
                     {project.demo && (
