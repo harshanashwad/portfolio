@@ -4,7 +4,7 @@ import { PageTransition } from "../components/PageTransition";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
-import { Brain, BarChart3, Server, Zap, Wrench, Award, Cloud, Calculator, GraduationCap, Code } from "lucide-react";
+import { Brain, BarChart3, Server, Zap, Wrench, Award, Cloud, Calculator, GraduationCap, Code, BotMessageSquare } from "lucide-react";
 import { FlippableCard } from "../components/FlippableCard";
 
 export const Skills = () => {
@@ -92,6 +92,12 @@ export const Skills = () => {
       icon: GraduationCap,
       url: "https://www.udemy.com/certificate/UC-35514136-e75e-48f4-b0b0-e2d50866a058/"
     },
+    {
+      title: "Building LLM-Powered Applications (W&B)",
+      year: "2025",
+      icon: BotMessageSquare,
+      url: "https://www.credential.net/3a19b6cb-bcb3-49de-977c-7efb84161b66#acc.y9LbUO2V"
+    }
     // {
     //   title: "Complete Python Developer (ZTM)",
     //   year: "2021",
