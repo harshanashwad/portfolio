@@ -4,6 +4,12 @@ import { PageTransition } from "../components/PageTransition";
 export const About = () => {
   const experiences = [
     {
+      title: "AI Engineer Lead",
+      company: "AI Seer",
+      period: "Jul 2025 - Present",
+      description: "Architected the backend for Facticity, an AI fact-checking platform now handling 300+ daily verifications. Set up end-to-end training pipelines on AWS SageMaker with methodical experiment tracking, fine-tuning Llama models for fact-checking and deploying them to edge devices."
+    },
+    {
       title: "Software Developer",
       company: "IBM",
       period: "Jan 2022 - Nov 2023",
@@ -51,13 +57,14 @@ export const About = () => {
           >
             <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-2xl p-8 md:p-12 shadow-xl border border-gray-200 dark:border-gray-700">
               <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
-                Software Developer with a strong foundation in AI, currently pursuing my Master's in Artificial Intelligence at NUS.
-              </p>
-              <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
-                With past experience at IBM and hands-on work across full-stack development and machine learning, I enjoy building systems that merge logic with creativity — from real-time apps to LLM-powered assistants. I love to explore the intersection of technology and intelligence — a lifelong learner passionate about clean code and clever systems.
+                AI Engineer currently leading engineering at AI Seer, where I fine-tune LLMs, build fact-checking systems, and deploy models to run on edge devices and laptops.
               </p>
               <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-                Outside of dev life, you'll find me having coffee, trying to fool LLMs or overthinking model architectures for fun.
+                I love the intersection of intelligent systems and practical engineering — whether it's training models on AWS, architecting RAG pipelines, or figuring out how to squeeze a 16GB model into 4.6GB so it runs on your laptop. My sweet spot? Making AI actually work in production, not just in notebooks.
+              </p>
+              <br />
+              <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                Outside of dev life, you'll find me having coffee, trying to fool LLMs, or overthinking model architectures for fun.
               </p>
             </div>
           </motion.div>
