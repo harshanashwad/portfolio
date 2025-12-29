@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { PageTransition } from "../components/PageTransition";
 import IBMLogo from "@/assets/IBM.svg";
 import TCELogo from "@/assets/tce_logo.png";
+import NUSLogo from "@/assets/nus_logo.png";
 
 export const About = () => {
   const experiences = [
@@ -26,7 +27,7 @@ export const About = () => {
       degree: "Master of Computing in Artificial Intelligence",
       school: "National University of Singapore",
       period: "Jan 2024 - Jun 2025",
-      logo: null
+      logo: NUSLogo
     },
     {
       degree: "BE Computer Science and Engineering",
