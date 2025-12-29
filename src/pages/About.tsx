@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { PageTransition } from "../components/PageTransition";
+import IBMLogo from "@/assets/IBM.svg";
 
 export const About = () => {
   const experiences = [
@@ -7,13 +8,15 @@ export const About = () => {
       title: "AI Engineer Lead",
       company: "AI Seer",
       period: "Jul 2025 - Present",
-      description: "Architected the backend for Facticity, an AI fact-checking platform now handling 300+ daily verifications. Set up end-to-end training pipelines on AWS SageMaker with methodical experiment tracking, fine-tuning Llama models for fact-checking and deploying them to edge devices."
+      description: "Architected the backend for Facticity, an AI fact-checking platform now handling 300+ daily verifications. Set up end-to-end training pipelines on AWS SageMaker with methodical experiment tracking, fine-tuning Llama models for fact-checking and deploying them to edge devices.",
+      logo: null
     },
     {
       title: "Software Developer",
       company: "IBM",
       period: "Jan 2022 - Nov 2023",
-      description: "Led development of Quote To Cash application using Node.js and Vue.js, implementing real-time features and optimizing system performance. Built SMTP-based monitoring system reducing downtime by 25% and managed AWS infrastructure (EC2, IAM, S3) for deployments."
+      description: "Led development of Quote To Cash application using Node.js and Vue.js, implementing real-time features and optimizing system performance. Built SMTP-based monitoring system reducing downtime by 25% and managed AWS infrastructure (EC2, IAM, S3) for deployments.",
+      logo: IBMLogo
     }
   ];
 
@@ -89,11 +92,22 @@ export const About = () => {
                   transition={{ duration: 0.6, delay: 0.8 + index * 0.2 }}
                 >
                   <div className="absolute -left-2 top-0 w-4 h-4 bg-purple-500 rounded-full"></div>
-                  <div className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-lg rounded-xl p-6 border border-gray-200 dark:border-gray-700">
-                    <h3 className="text-xl font-bold text-gray-800 dark:text-white">{exp.title}</h3>
-                    <p className="text-purple-600 dark:text-purple-400 font-semibold">{exp.company}</p>
-                    <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">{exp.period}</p>
-                    <p className="text-gray-600 dark:text-gray-300">{exp.description}</p>
+                  <div className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-lg rounded-xl p-6 border border-gray-200 dark:border-gray-700 flex">
+                    <div className="flex-1 pr-4">
+                      <h3 className="text-xl font-bold text-gray-800 dark:text-white">{exp.title}</h3>
+                      <p className="text-purple-600 dark:text-purple-400 font-semibold">{exp.company}</p>
+                      <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">{exp.period}</p>
+                      <p className="text-gray-600 dark:text-gray-300">{exp.description}</p>
+                    </div>
+                    {exp.logo && (
+                      <div className="flex-shrink-0 flex items-center py-[12.5%] pl-4">
+                        <img 
+                          src={exp.logo} 
+                          alt={`${exp.company} logo`} 
+                          className="w-16 h-16 md:w-20 md:h-20 rounded-lg object-contain"
+                        />
+                      </div>
+                    )}
                   </div>
                 </motion.div>
               ))}
