@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { PageTransition } from "../components/PageTransition";
 import IBMLogo from "@/assets/IBM.svg";
+import TCELogo from "@/assets/tce_logo.png";
 
 export const About = () => {
   const experiences = [
@@ -24,12 +25,14 @@ export const About = () => {
     {
       degree: "Master of Computing in Artificial Intelligence",
       school: "National University of Singapore",
-      period: "Jan 2024 - Jun 2025"
+      period: "Jan 2024 - Jun 2025",
+      logo: null
     },
     {
       degree: "BE Computer Science and Engineering",
       school: "Thiagarajar College of Engineering",
-      period: "Aug 2018 - Aug 2022"
+      period: "Aug 2018 - Aug 2022",
+      logo: TCELogo
     }
   ];
 
@@ -134,10 +137,21 @@ export const About = () => {
                   transition={{ duration: 0.6, delay: 0.8 + index * 0.2 }}
                 >
                   <div className="absolute -left-2 top-0 w-4 h-4 bg-purple-500 rounded-full"></div>
-                  <div className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-lg rounded-xl p-6 border border-gray-200 dark:border-gray-700">
-                    <h3 className="text-xl font-bold text-gray-800 dark:text-white">{edu.school}</h3>
-                    <p className="text-purple-600 dark:text-purple-400 font-semibold">{edu.degree}</p>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">{edu.period}</p>
+                  <div className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-lg rounded-xl p-6 border border-gray-200 dark:border-gray-700 flex">
+                    <div className="flex-1 pr-4">
+                      <h3 className="text-xl font-bold text-gray-800 dark:text-white">{edu.school}</h3>
+                      <p className="text-purple-600 dark:text-purple-400 font-semibold">{edu.degree}</p>
+                      <p className="text-sm text-gray-500 dark:text-gray-400">{edu.period}</p>
+                    </div>
+                    {edu.logo && (
+                      <div className="w-[25%] flex-shrink-0 flex items-center justify-center py-6">
+                        <img 
+                          src={edu.logo} 
+                          alt={`${edu.school} logo`} 
+                          className="w-[50%] rounded-lg object-contain"
+                        />
+                      </div>
+                    )}
                   </div>
                 </motion.div>
               ))}
