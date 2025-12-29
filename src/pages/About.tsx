@@ -27,13 +27,15 @@ export const About = () => {
       degree: "Master of Computing in Artificial Intelligence",
       school: "National University of Singapore",
       period: "Jan 2024 - Jun 2025",
-      logo: NUSLogo
+      logo: NUSLogo,
+      logoSize: "w-[40%]"
     },
     {
       degree: "BE Computer Science and Engineering",
       school: "Thiagarajar College of Engineering",
       period: "Aug 2018 - Aug 2022",
-      logo: TCELogo
+      logo: TCELogo,
+      logoSize: "w-[65%]"
     }
   ];
 
@@ -149,7 +151,7 @@ export const About = () => {
                         <img 
                           src={edu.logo} 
                           alt={`${edu.school} logo`} 
-                          className="w-[50%] rounded-lg object-contain"
+                          className={`${edu.logoSize || 'w-[50%]'} rounded-lg object-contain`}
                         />
                       </div>
                     )}
