@@ -100,11 +100,11 @@ export const About = () => {
                       <p className="text-gray-600 dark:text-gray-300">{exp.description}</p>
                     </div>
                     {exp.logo && (
-                      <div className="flex-shrink-0 flex items-center py-[12.5%] pl-4">
+                      <div className="flex-shrink-0 flex items-center justify-center pl-6 self-stretch py-3">
                         <img 
                           src={exp.logo} 
                           alt={`${exp.company} logo`} 
-                          className="w-16 h-16 md:w-20 md:h-20 rounded-lg object-contain"
+                          className="h-[50%] min-h-[60px] aspect-square rounded-lg object-contain"
                         />
                       </div>
                     )}
